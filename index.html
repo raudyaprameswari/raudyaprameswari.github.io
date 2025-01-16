@@ -1,0 +1,3380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Raudya Prameswari">
+<meta name="dcterms.date" content="2025-01-17">
+
+<title>Analisis Regresi Multivariat, dan Fixed Effects terhadap Faktor-Faktor yang Mempengaruhi Ekspor di Negara ASEAN</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="index_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="index_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analisis Regresi Multivariat, dan Fixed Effects terhadap Faktor-Faktor yang Mempengaruhi Ekspor di Negara ASEAN</h1>
+<p class="subtitle lead">Metode Penelitian Politeknik APP Jakarta</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Raudya Prameswari </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 17, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="poltekapp.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div style="text-align: justify">
+<section id="pendahuluan" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="pendahuluan"><span class="header-section-number">1</span> Pendahuluan</h2>
+<section id="latar-belakang" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="latar-belakang"><span class="header-section-number">1.1</span> Latar belakang</h3>
+<p>Negara-negara di kawasan ASEAN memiliki peran strategis dalam perekonomian global sebagai salah satu kawasan dengan pertumbuhan ekonomi tercepat. Sebagai blok perdagangan, ASEAN memiliki keunggulan kompetitif dalam berbagai sektor seperti manufaktur, pertanian, dan jasa. Namun, performa ekspor antarnegara ASEAN menunjukkan variasi yang signifikan, dipengaruhi oleh faktor-faktor ekonomi seperti total Produk Domestik Bruto (GDP), pertumbuhan ekonomi, nilai tukar, dan populasi. Dalam era globalisasi, pemahaman mendalam tentang faktor-faktor yang mendorong ekspor menjadi sangat penting bagi pengambil kebijakan untuk meningkatkan daya saing internasional.</p>
+<p>Penelitian ini menggunakan pendekatan regresi sederhana, multivariat, dan fixed effects untuk menganalisis pengaruh variabel-variabel ekonomi terhadap ekspor di negara-negara ASEAN. Regresi sederhana digunakan untuk memahami hubungan langsung antara status middle income dan ekspor. Regresi multivariat digunakan untuk mengevaluasi pengaruh faktor-faktor tambahan seperti pertumbuhan GDP, nilai tukar, dan populasi. Sementara itu, model fixed effects diterapkan untuk menangkap efek khusus tiap negara yang tidak terukur secara langsung. Dengan pendekatan ini, penelitian bertujuan untuk memberikan gambaran yang komprehensif mengenai determinan ekspor di ASEAN dan implikasinya terhadap kebijakan ekonomi.</p>
+</section>
+<section id="ruang-lingkup" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="ruang-lingkup"><span class="header-section-number">1.2</span> Ruang lingkup</h3>
+<p><strong>Ruang Lingkup Penelitian</strong></p>
+<p>Penelitian ini difokuskan pada analisis faktor-faktor ekonomi yang memengaruhi ekspor di negara-negara ASEAN. Adapun ruang lingkup penelitian ini meliputi:</p>
+<ol type="1">
+<li><p><strong>Kawasan dan Subjek Penelitian</strong>:</p>
+<ul>
+<li><p>Kawasan yang dianalisis adalah negara-negara anggota ASEAN, meliputi Indonesia, Malaysia, Filipina, Singapura, Thailand, Vietnam, Brunei Darussalam, Kamboja, dan Timor Leste.</p></li>
+<li><p>Subjek penelitian mencakup data ekonomi makro negara-negara tersebut, khususnya yang berkaitan dengan ekspor.</p></li>
+</ul></li>
+<li><p><strong>Periode Waktu</strong>:</p>
+<ul>
+<li>Penelitian ini menggunakan data tahunan dari tahun 2000 hingga 2020 untuk menangkap dinamika jangka panjang dalam performa ekspor.</li>
+</ul></li>
+<li><p><strong>Variabel Penelitian</strong>:</p>
+<ul>
+<li><p><strong>Variabel Dependen</strong>: Nilai ekspor (dalam US$).</p></li>
+<li><p><strong>Variabel Independen</strong>: GDP Total, pertumbuhan GDP, nilai tukar, dan populasi.</p></li>
+<li><p><strong>Variabel Dummy</strong>: Status middle income berdasarkan threshold GDP Total.</p></li>
+</ul></li>
+<li><p><strong>Sumber Data</strong>:</p>
+<ul>
+<li>Data yang digunakan berasal dari World Bank melalui paket <code>WDI</code> di R Studio, mencakup indikator ekonomi seperti nilai ekspor, GDP Total, pertumbuhan GDP, nilai tukar, dan populasi.</li>
+</ul></li>
+</ol>
+</section>
+<section id="rumusan-masalah" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="rumusan-masalah"><span class="header-section-number">1.3</span> Rumusan masalah</h3>
+<p>Berdasarkan analisis regresi yang akan dilakukan,rumusan masalah penelitian adalah sebagai berikut:</p>
+<ol type="1">
+<li><p>Bagaimana pengaruh status middle income terhadap nilai ekspor di negara-negara ASEAN?</p></li>
+<li><p>Faktor-faktor ekonomi apa saja, seperti GDP Total, pertumbuhan GDP, nilai tukar, dan populasi, yang secara signifikan memengaruhi ekspor di negara-negara ASEAN?</p></li>
+<li><p>Sejauh mana variabel ekonomi memberikan kontribusi yang berbeda pada nilai ekspor antarnegara di kawasan ASEAN?</p></li>
+<li><p>Apakah terdapat efek khusus yang unik di setiap negara ASEAN yang memengaruhi hubungan antara faktor ekonomi dan nilai ekspor?</p></li>
+<li><p>Bagaimana performa model regresi multivariat, dan fixed effects dalam menganalisis determinan ekspor di ASEAN?</p></li>
+</ol>
+</section>
+<section id="tujuan-dan-manfaat-penelitian" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="tujuan-dan-manfaat-penelitian"><span class="header-section-number">1.4</span> Tujuan dan manfaat penelitian</h3>
+<p>Berdasarkan latar belakang penelitian, kawasan ASEAN memiliki peran penting dalam perekonomian global dengan kontribusi ekspor yang signifikan. Namun, variasi kinerja ekspor antarnegara ASEAN menunjukkan adanya pengaruh dari berbagai faktor ekonomi, seperti GDP Total, pertumbuhan GDP, nilai tukar, dan populasi. Untuk memahami hubungan ini secara mendalam, penelitian ini bertujuan menganalisis pengaruh faktor-faktor tersebut terhadap ekspor di negara-negara ASEAN dengan pendekatan regresi sederhana, multivariat, dan fixed effects.</p>
+<p>Diharapkan, hasil penelitian ini tidak hanya memberikan kontribusi teoretis bagi literatur ekonomi internasional, tetapi juga memberikan rekomendasi praktis bagi pembuat kebijakan dan pelaku usaha dalam meningkatkan daya saing ekspor negara-negara ASEAN.</p>
+<p>Manfaat lain:</p>
+<ul>
+<li><p>Memberikan kontribusi pada pengembangan literatur ekonomi internasional, khususnya terkait hubungan antara faktor-faktor ekonomi makro dan ekspor di kawasan ASEAN.</p></li>
+<li><p>Menunjukkan efektivitas pendekatan regresi multivariat, dan fixed effects dalam menganalisis data lintas negara dan waktu (panel data).</p></li>
+<li><p>Memberikan rekomendasi kebijakan untuk meningkatkan ekspor di negara-negara ASEAN berdasarkan determinan ekonomi yang signifikan.</p></li>
+<li><p>Memberikan gambaran tentang pengaruh variabel ekonomi tertentu terhadap potensi ekspor, sehingga pelaku usaha dapat merancang strategi bisnis yang lebih baik.</p></li>
+</ul>
+</section>
+<section id="package" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="package"><span class="header-section-number">1.5</span> Package</h3>
+<p>Packages yang digunakan antara lain sebagai berikut:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WDI)       <span class="co"># Mengambil data World Bank</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)     <span class="co"># Manipulasi data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)   <span class="co"># Visualisasi data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)       <span class="co"># Analisis data panel</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)<span class="co"># Pembuatan tabel</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra) <span class="co"># Banyak Plot Sekaligus</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)  <span class="co"># Plot Correlation Matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="studi-pustaka" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="studi-pustaka"><span class="header-section-number">2</span> Studi pustaka</h2>
+<p><strong>Ekspor dan Faktor Ekonomi Makro</strong></p>
+<p>Ekspor merupakan salah satu pendorong utama pertumbuhan ekonomi, terutama di kawasan ASEAN yang memiliki peran strategis dalam perdagangan global. Penelitian sebelumnya menunjukkan bahwa GDP, nilai tukar, dan populasi secara signifikan memengaruhi performa ekspor suatu negara. Penelitian oleh Wardatul Luthfiyana (2020) menemukan bahwa Foreign Direct Investment (FDI), inflasi, GDP, dan nilai tukar memberikan pengaruh signifikan terhadap kinerja ekspor di ASEAN 5, yaitu Indonesia, Malaysia, Singapura, Thailand, dan Filipina. Temuan ini konsisten dengan studi oleh Anita Yulistina (2018), yang menunjukkan bahwa GDP berkontribusi besar terhadap kinerja ekspor Indonesia dalam hubungan dagang dengan negara-negara ASEAN dan mitra dagang utama lainnya.</p>
+<p><strong>Peran GDP dalam Perdagangan Internasional</strong></p>
+<p>GDP merupakan indikator utama dalam menganalisis kekuatan ekonomi sebuah negara. Penelitian Budi Santoso (2017) menemukan bahwa GDP Total berpengaruh positif terhadap ekspor di ASEAN. Studi ini juga menyoroti perbedaan efek variabel ekonomi makro terhadap negara dengan status middle income dibandingkan negara berpenghasilan tinggi. Penelitian lain oleh Ibrahim dkk. (2020) menggunakan pendekatan model gravitasi dan membuktikan bahwa GDP, ukuran populasi, dan jarak ekonomi merupakan determinan utama dalam perdagangan internasional.</p>
+<p><strong>Nilai Tukar dan Ekspor</strong></p>
+<p>Nilai tukar memainkan peran penting dalam menentukan daya saing harga barang di pasar internasional. Penelitian oleh Rizki Permana (2018) menunjukkan bahwa perubahan nilai tukar memiliki dampak signifikan terhadap ekspor negara-negara ASEAN dalam jangka pendek, meskipun dampaknya berbeda di setiap negara. Studi ini menegaskan pentingnya stabilitas nilai tukar untuk meningkatkan daya saing ekspor.</p>
+<p><strong>Metode Analisis: Regresi dan Fixed Effects</strong></p>
+<p>Penggunaan pendekatan regresi sederhana, multivariat, dan fixed effects menjadi populer dalam penelitian perdagangan internasional. Studi oleh Febriani dkk. (2021) memanfaatkan data panel dinamis untuk menganalisis determinan ekspor di negara-negara ASEAN, yang mencakup variabel makroekonomi seperti GDP Total, pertumbuhan GDP, nilai tukar, dan populasi. Penelitian ini menekankan pentingnya pendekatan fixed effects untuk menangkap karakteristik khusus tiap negara, sehingga menghasilkan analisis yang lebih akurat.</p>
+<p><strong>Konteks ASEAN dalam Perdagangan</strong></p>
+<p>ASEAN sebagai blok perdagangan telah memperkuat integrasi ekonominya melalui kerja sama regional, seperti ASEAN Free Trade Area (AFTA). Studi oleh Wijaya dkk. (2022) menunjukkan bahwa status keanggotaan ASEAN memberikan pengaruh positif terhadap peningkatan ekspor negara-negara anggota dibandingkan non-anggota. Penelitian ini menyoroti pentingnya perjanjian perdagangan regional dalam meningkatkan perdagangan lintas batas.</p>
+</section>
+<section id="metode-penelitian" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="metode-penelitian"><span class="header-section-number">3</span> Metode penelitian</h2>
+<section id="data" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="data"><span class="header-section-number">3.1</span> Data</h3>
+<p>Data yang digunakan dalam penelitian berikut berasal dari World Bank mencakup indikator ekonomi seperti nilai ekspor, GDP Total, pertumbuhan GDP, nilai tukar, dan populasi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Download Data World Bank (WDI)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Unduh data untuk negara ASEAN dengan variabel GDP Total</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"MY"</span>, <span class="st">"PH"</span>, <span class="st">"SG"</span>, <span class="st">"TH"</span>, <span class="st">"VN"</span>, <span class="st">"BN"</span>, <span class="st">"KH"</span>, <span class="st">"TL"</span>), </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">indicator =</span> <span class="fu">c</span>(<span class="st">"NE.EXP.GNFS.CD"</span>,    <span class="co"># Export (current US$)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"NY.GDP.MKTP.CD"</span>,   <span class="co"># GDP Total (current US$)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"NY.GDP.MKTP.KD.ZG"</span>,<span class="co"># GDP growth (annual %)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"PA.NUS.FCRF"</span>,      <span class="co"># Exchange rate</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"SP.POP.TOTL"</span>),     <span class="co"># Population</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">start =</span> <span class="dv">2000</span>, </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">end =</span> <span class="dv">2020</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ubah nama kolom agar lebih deskriptif</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"country"</span>,<span class="st">"iso2c"</span>, <span class="st">"iso3c"</span>, <span class="st">"year"</span>, <span class="st">"export"</span>, <span class="st">"gdp_total"</span>, </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"gdp_growth"</span>, <span class="st">"exchange_rate"</span>, <span class="st">"population"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Membersihkan Data</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Hapus nilai kosong di kolom penting</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>data_clean <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gdp_total) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(export) <span class="sc">&amp;</span> </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(gdp_growth) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(exchange_rate) <span class="sc">&amp;</span> </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(population))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Tambahkan Variabel Dummy</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Tambahkan dummy untuk middle income berdasarkan GDP Total</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>data_clean <span class="ot">&lt;-</span> data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">middle_income =</span> <span class="fu">ifelse</span>(gdp_total <span class="sc">&gt;=</span> <span class="fl">1e10</span> <span class="sc">&amp;</span> gdp_total <span class="sc">&lt;=</span> <span class="fl">5e12</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Eksplorasi Data</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistik Deskriptif</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   country             iso2c              iso3c                year     
+ Length:189         Length:189         Length:189         Min.   :2000  
+ Class :character   Class :character   Class :character   1st Qu.:2005  
+ Mode  :character   Mode  :character   Mode  :character   Median :2010  
+                                                          Mean   :2010  
+                                                          3rd Qu.:2015  
+                                                          Max.   :2020  
+     export            gdp_total           gdp_growth     exchange_rate      
+ Min.   :3.295e+07   Min.   :3.669e+08   Min.   :-9.518   Min.   :    1.000  
+ 1st Qu.:8.004e+09   1st Qu.:1.381e+10   1st Qu.: 3.134   1st Qu.:    1.507  
+ Median :8.145e+10   Median :1.435e+11   Median : 5.087   Median :   34.248  
+ Mean   :1.329e+11   Mean   :2.038e+11   Mean   : 5.104   Mean   : 3738.732  
+ 3rd Qu.:2.081e+11   3rd Qu.:3.080e+11   3rd Qu.: 6.899   3rd Qu.: 4067.750  
+ Max.   :6.717e+11   Max.   :1.119e+12   Max.   :58.078   Max.   :23208.368  
+   population        middle_income   
+ Min.   :   326424   Min.   :0.0000  
+ 1st Qu.:  4265762   1st Qu.:1.0000  
+ Median : 28655776   Median :1.0000  
+ Mean   : 60833591   Mean   :0.8254  
+ 3rd Qu.: 87455152   3rd Qu.:1.0000  
+ Max.   :274814866   Max.   :1.0000  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribusi middle income di negara ASEAN</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_clean<span class="sc">$</span>middle_income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0   1 
+ 33 156 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cetak tabel dengan kable</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Data Clean"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>, <span class="st">"responsive"</span>, <span class="st">"bordered"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed table-bordered table-sm small" data-quarto-postprocess="true">
+<caption>Data Clean</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">iso2c</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">iso3c</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">export</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">gdp_total</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">gdp_growth</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">exchange_rate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">population</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">middle_income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">3743517657</td>
+<td style="text-align: right;">6.570999e+09</td>
+<td style="text-align: right;">3.4746763</td>
+<td style="text-align: right;">1.723963</td>
+<td style="text-align: right;">326424</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">3531476932</td>
+<td style="text-align: right;">6.096156e+09</td>
+<td style="text-align: right;">1.4660605</td>
+<td style="text-align: right;">1.791723</td>
+<td style="text-align: right;">333345</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">3588069777</td>
+<td style="text-align: right;">6.333083e+09</td>
+<td style="text-align: right;">3.9614391</td>
+<td style="text-align: right;">1.790588</td>
+<td style="text-align: right;">340099</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">4187448771</td>
+<td style="text-align: right;">7.167725e+09</td>
+<td style="text-align: right;">3.5834289</td>
+<td style="text-align: right;">1.742183</td>
+<td style="text-align: right;">346637</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">4978970783</td>
+<td style="text-align: right;">8.619179e+09</td>
+<td style="text-align: right;">0.1045384</td>
+<td style="text-align: right;">1.690228</td>
+<td style="text-align: right;">352911</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">6177687105</td>
+<td style="text-align: right;">1.054720e+10</td>
+<td style="text-align: right;">-0.0039252</td>
+<td style="text-align: right;">1.664397</td>
+<td style="text-align: right;">358916</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">7607073525</td>
+<td style="text-align: right;">1.264462e+10</td>
+<td style="text-align: right;">4.0984126</td>
+<td style="text-align: right;">1.588933</td>
+<td style="text-align: right;">364663</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">7651436605</td>
+<td style="text-align: right;">1.343203e+10</td>
+<td style="text-align: right;">-3.7636235</td>
+<td style="text-align: right;">1.507102</td>
+<td style="text-align: right;">370873</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">10502405644</td>
+<td style="text-align: right;">1.592646e+10</td>
+<td style="text-align: right;">-3.9007108</td>
+<td style="text-align: right;">1.417167</td>
+<td style="text-align: right;">377793</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">7112433474</td>
+<td style="text-align: right;">1.191290e+10</td>
+<td style="text-align: right;">-1.9002539</td>
+<td style="text-align: right;">1.454569</td>
+<td style="text-align: right;">384952</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">9239730724</td>
+<td style="text-align: right;">1.370712e+10</td>
+<td style="text-align: right;">2.7413643</td>
+<td style="text-align: right;">1.363509</td>
+<td style="text-align: right;">392332</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">12875904772</td>
+<td style="text-align: right;">1.852479e+10</td>
+<td style="text-align: right;">3.7444064</td>
+<td style="text-align: right;">1.257913</td>
+<td style="text-align: right;">399389</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">13364336606</td>
+<td style="text-align: right;">1.904844e+10</td>
+<td style="text-align: right;">0.9131353</td>
+<td style="text-align: right;">1.249567</td>
+<td style="text-align: right;">405557</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">12312003443</td>
+<td style="text-align: right;">1.809415e+10</td>
+<td style="text-align: right;">-2.1247832</td>
+<td style="text-align: right;">1.251166</td>
+<td style="text-align: right;">411202</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">11656782738</td>
+<td style="text-align: right;">1.709780e+10</td>
+<td style="text-align: right;">-2.5078872</td>
+<td style="text-align: right;">1.267040</td>
+<td style="text-align: right;">416750</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">6751297357</td>
+<td style="text-align: right;">1.293030e+10</td>
+<td style="text-align: right;">-0.3923835</td>
+<td style="text-align: right;">1.374911</td>
+<td style="text-align: right;">422212</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">5651998492</td>
+<td style="text-align: right;">1.140027e+10</td>
+<td style="text-align: right;">-2.4779178</td>
+<td style="text-align: right;">1.381347</td>
+<td style="text-align: right;">427564</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">6012333908</td>
+<td style="text-align: right;">1.212817e+10</td>
+<td style="text-align: right;">1.3287265</td>
+<td style="text-align: right;">1.380891</td>
+<td style="text-align: right;">432772</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">7045735093</td>
+<td style="text-align: right;">1.356691e+10</td>
+<td style="text-align: right;">0.0523711</td>
+<td style="text-align: right;">1.348919</td>
+<td style="text-align: right;">437810</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">7804888564</td>
+<td style="text-align: right;">1.346924e+10</td>
+<td style="text-align: right;">3.8688442</td>
+<td style="text-align: right;">1.364219</td>
+<td style="text-align: right;">442680</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brunei Darussalam</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">BRN</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">6886059829</td>
+<td style="text-align: right;">1.200580e+10</td>
+<td style="text-align: right;">1.1335734</td>
+<td style="text-align: right;">1.379703</td>
+<td style="text-align: right;">447404</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">1821406331</td>
+<td style="text-align: right;">3.694169e+09</td>
+<td style="text-align: right;">9.9935803</td>
+<td style="text-align: right;">3840.750000</td>
+<td style="text-align: right;">12462336</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">2121742524</td>
+<td style="text-align: right;">4.145666e+09</td>
+<td style="text-align: right;">7.3897107</td>
+<td style="text-align: right;">3916.333333</td>
+<td style="text-align: right;">12658484</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">2439168009</td>
+<td style="text-align: right;">4.501228e+09</td>
+<td style="text-align: right;">6.2650728</td>
+<td style="text-align: right;">3912.083333</td>
+<td style="text-align: right;">12855241</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">2736752435</td>
+<td style="text-align: right;">5.046693e+09</td>
+<td style="text-align: right;">10.2836813</td>
+<td style="text-align: right;">3973.333333</td>
+<td style="text-align: right;">13050968</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">3578124692</td>
+<td style="text-align: right;">5.883297e+09</td>
+<td style="text-align: right;">9.4576948</td>
+<td style="text-align: right;">4016.250000</td>
+<td style="text-align: right;">13244731</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">4313261451</td>
+<td style="text-align: right;">7.066296e+09</td>
+<td style="text-align: right;">13.3033338</td>
+<td style="text-align: right;">4092.500000</td>
+<td style="text-align: right;">13439202</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">5400482920</td>
+<td style="text-align: right;">8.350531e+09</td>
+<td style="text-align: right;">10.9433601</td>
+<td style="text-align: right;">4103.250000</td>
+<td style="text-align: right;">13639028</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">6191862457</td>
+<td style="text-align: right;">1.012792e+10</td>
+<td style="text-align: right;">10.3984581</td>
+<td style="text-align: right;">4056.166667</td>
+<td style="text-align: right;">13841770</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">7521137176</td>
+<td style="text-align: right;">1.217430e+10</td>
+<td style="text-align: right;">7.4763661</td>
+<td style="text-align: right;">4054.166667</td>
+<td style="text-align: right;">14053479</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">5777715035</td>
+<td style="text-align: right;">1.250290e+10</td>
+<td style="text-align: right;">4.0747785</td>
+<td style="text-align: right;">4139.333333</td>
+<td style="text-align: right;">14276810</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">6935619207</td>
+<td style="text-align: right;">1.380867e+10</td>
+<td style="text-align: right;">5.0769184</td>
+<td style="text-align: right;">4184.916667</td>
+<td style="text-align: right;">14500726</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">8003673661</td>
+<td style="text-align: right;">1.603262e+10</td>
+<td style="text-align: right;">7.2866581</td>
+<td style="text-align: right;">4058.500000</td>
+<td style="text-align: right;">14722584</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">9498870542</td>
+<td style="text-align: right;">1.782654e+10</td>
+<td style="text-align: right;">7.6502566</td>
+<td style="text-align: right;">4033.000000</td>
+<td style="text-align: right;">14945085</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">11214912044</td>
+<td style="text-align: right;">1.980714e+10</td>
+<td style="text-align: right;">7.8574998</td>
+<td style="text-align: right;">4027.250000</td>
+<td style="text-align: right;">15170208</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">12481981424</td>
+<td style="text-align: right;">2.204146e+10</td>
+<td style="text-align: right;">8.0003207</td>
+<td style="text-align: right;">4037.500000</td>
+<td style="text-align: right;">15396772</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">13532995573</td>
+<td style="text-align: right;">2.417417e+10</td>
+<td style="text-align: right;">7.2070347</td>
+<td style="text-align: right;">4067.750000</td>
+<td style="text-align: right;">15623251</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">14986346465</td>
+<td style="text-align: right;">2.655655e+10</td>
+<td style="text-align: right;">7.9055012</td>
+<td style="text-align: right;">4058.694579</td>
+<td style="text-align: right;">15852803</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">16527255663</td>
+<td style="text-align: right;">2.935567e+10</td>
+<td style="text-align: right;">8.0750392</td>
+<td style="text-align: right;">4050.579986</td>
+<td style="text-align: right;">16073372</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">18386489552</td>
+<td style="text-align: right;">3.314589e+10</td>
+<td style="text-align: right;">8.7762238</td>
+<td style="text-align: right;">4051.166900</td>
+<td style="text-align: right;">16274522</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">20340881133</td>
+<td style="text-align: right;">3.668536e+10</td>
+<td style="text-align: right;">7.9369501</td>
+<td style="text-align: right;">4061.148963</td>
+<td style="text-align: right;">16481304</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cambodia</td>
+<td style="text-align: left;">KH</td>
+<td style="text-align: left;">KHM</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">20863615890</td>
+<td style="text-align: right;">3.481807e+10</td>
+<td style="text-align: right;">-3.5557219</td>
+<td style="text-align: right;">4092.783219</td>
+<td style="text-align: right;">16725474</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">67621169166</td>
+<td style="text-align: right;">1.650210e+11</td>
+<td style="text-align: right;">4.9200677</td>
+<td style="text-align: right;">8421.775000</td>
+<td style="text-align: right;">216077790</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">62625875834</td>
+<td style="text-align: right;">1.604469e+11</td>
+<td style="text-align: right;">3.6434664</td>
+<td style="text-align: right;">10260.850000</td>
+<td style="text-align: right;">219097902</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">63956798805</td>
+<td style="text-align: right;">1.956606e+11</td>
+<td style="text-align: right;">4.4994754</td>
+<td style="text-align: right;">9311.191667</td>
+<td style="text-align: right;">222088495</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">71553141045</td>
+<td style="text-align: right;">2.347725e+11</td>
+<td style="text-align: right;">4.7803691</td>
+<td style="text-align: right;">8577.133333</td>
+<td style="text-align: right;">225048008</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">82744351781</td>
+<td style="text-align: right;">2.568369e+11</td>
+<td style="text-align: right;">5.0308739</td>
+<td style="text-align: right;">8938.850000</td>
+<td style="text-align: right;">227926649</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">97387627566</td>
+<td style="text-align: right;">2.858686e+11</td>
+<td style="text-align: right;">5.6925713</td>
+<td style="text-align: right;">9704.741667</td>
+<td style="text-align: right;">230871650</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">113143425288</td>
+<td style="text-align: right;">3.645705e+11</td>
+<td style="text-align: right;">5.5009518</td>
+<td style="text-align: right;">9159.316667</td>
+<td style="text-align: right;">233951652</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">127226102177</td>
+<td style="text-align: right;">4.322167e+11</td>
+<td style="text-align: right;">6.3450222</td>
+<td style="text-align: right;">9141.000000</td>
+<td style="text-align: right;">237062337</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">152090401422</td>
+<td style="text-align: right;">5.102286e+11</td>
+<td style="text-align: right;">6.0137036</td>
+<td style="text-align: right;">9698.962500</td>
+<td style="text-align: right;">240157903</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">130357798591</td>
+<td style="text-align: right;">5.395801e+11</td>
+<td style="text-align: right;">4.6288712</td>
+<td style="text-align: right;">10389.937500</td>
+<td style="text-align: right;">243220028</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">183480562955</td>
+<td style="text-align: right;">7.550942e+11</td>
+<td style="text-align: right;">6.2238542</td>
+<td style="text-align: right;">9090.433333</td>
+<td style="text-align: right;">246305322</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">235095129124</td>
+<td style="text-align: right;">8.929691e+11</td>
+<td style="text-align: right;">6.1697842</td>
+<td style="text-align: right;">8770.433333</td>
+<td style="text-align: right;">249470032</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">225744403276</td>
+<td style="text-align: right;">9.178699e+11</td>
+<td style="text-align: right;">6.0300507</td>
+<td style="text-align: right;">9386.629167</td>
+<td style="text-align: right;">252698525</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">218308408828</td>
+<td style="text-align: right;">9.125241e+11</td>
+<td style="text-align: right;">5.5572637</td>
+<td style="text-align: right;">10461.240000</td>
+<td style="text-align: right;">255852467</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">210820082826</td>
+<td style="text-align: right;">8.908148e+11</td>
+<td style="text-align: right;">5.0066684</td>
+<td style="text-align: right;">11865.211296</td>
+<td style="text-align: right;">258877399</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">182158298809</td>
+<td style="text-align: right;">8.608542e+11</td>
+<td style="text-align: right;">4.8763223</td>
+<td style="text-align: right;">13389.412937</td>
+<td style="text-align: right;">261799249</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">177886012744</td>
+<td style="text-align: right;">9.318774e+11</td>
+<td style="text-align: right;">5.0330692</td>
+<td style="text-align: right;">13308.326802</td>
+<td style="text-align: right;">264627418</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">204924485911</td>
+<td style="text-align: right;">1.015619e+12</td>
+<td style="text-align: right;">5.0697859</td>
+<td style="text-align: right;">13380.833879</td>
+<td style="text-align: right;">267346658</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">218905647879</td>
+<td style="text-align: right;">1.042272e+12</td>
+<td style="text-align: right;">5.1742915</td>
+<td style="text-align: right;">14236.938774</td>
+<td style="text-align: right;">269951846</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">208057763666</td>
+<td style="text-align: right;">1.119100e+12</td>
+<td style="text-align: right;">5.0192877</td>
+<td style="text-align: right;">14147.671361</td>
+<td style="text-align: right;">272489381</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">183546577020</td>
+<td style="text-align: right;">1.059055e+12</td>
+<td style="text-align: right;">-2.0655118</td>
+<td style="text-align: right;">14582.203468</td>
+<td style="text-align: right;">274814866</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">112369210526</td>
+<td style="text-align: right;">9.378974e+10</td>
+<td style="text-align: right;">8.8588682</td>
+<td style="text-align: right;">3.800000</td>
+<td style="text-align: right;">22967816</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">102435789474</td>
+<td style="text-align: right;">9.278395e+10</td>
+<td style="text-align: right;">0.5176753</td>
+<td style="text-align: right;">3.800000</td>
+<td style="text-align: right;">23526538</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">109221052632</td>
+<td style="text-align: right;">1.008455e+11</td>
+<td style="text-align: right;">5.3909883</td>
+<td style="text-align: right;">3.800000</td>
+<td style="text-align: right;">24102477</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">117854210526</td>
+<td style="text-align: right;">1.102024e+11</td>
+<td style="text-align: right;">5.7884993</td>
+<td style="text-align: right;">3.800000</td>
+<td style="text-align: right;">24679602</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">143927631579</td>
+<td style="text-align: right;">1.247495e+11</td>
+<td style="text-align: right;">6.7834377</td>
+<td style="text-align: right;">3.800000</td>
+<td style="text-align: right;">25256772</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">162048875496</td>
+<td style="text-align: right;">1.435344e+11</td>
+<td style="text-align: right;">5.3321392</td>
+<td style="text-align: right;">3.787092</td>
+<td style="text-align: right;">25836071</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">182517092278</td>
+<td style="text-align: right;">1.626923e+11</td>
+<td style="text-align: right;">5.5848471</td>
+<td style="text-align: right;">3.668177</td>
+<td style="text-align: right;">26417909</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">205488238927</td>
+<td style="text-align: right;">1.935496e+11</td>
+<td style="text-align: right;">6.2987859</td>
+<td style="text-align: right;">3.437569</td>
+<td style="text-align: right;">26998389</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">229656580530</td>
+<td style="text-align: right;">2.308116e+11</td>
+<td style="text-align: right;">4.8317699</td>
+<td style="text-align: right;">3.335833</td>
+<td style="text-align: right;">27570059</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">184897274878</td>
+<td style="text-align: right;">2.022575e+11</td>
+<td style="text-align: right;">-1.5135287</td>
+<td style="text-align: right;">3.524503</td>
+<td style="text-align: right;">28124778</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">221687585588</td>
+<td style="text-align: right;">2.550176e+11</td>
+<td style="text-align: right;">7.4248474</td>
+<td style="text-align: right;">3.221087</td>
+<td style="text-align: right;">28655776</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">254020012399</td>
+<td style="text-align: right;">2.979517e+11</td>
+<td style="text-align: right;">5.2939128</td>
+<td style="text-align: right;">3.060003</td>
+<td style="text-align: right;">29162039</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">249353066125</td>
+<td style="text-align: right;">3.144430e+11</td>
+<td style="text-align: right;">5.4734542</td>
+<td style="text-align: right;">3.088801</td>
+<td style="text-align: right;">29662831</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">244490716806</td>
+<td style="text-align: right;">3.232762e+11</td>
+<td style="text-align: right;">4.6937225</td>
+<td style="text-align: right;">3.150909</td>
+<td style="text-align: right;">30174265</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">249470799240</td>
+<td style="text-align: right;">3.380661e+11</td>
+<td style="text-align: right;">6.0067219</td>
+<td style="text-align: right;">3.272860</td>
+<td style="text-align: right;">30696137</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">209287287857</td>
+<td style="text-align: right;">3.013553e+11</td>
+<td style="text-align: right;">5.0915324</td>
+<td style="text-align: right;">3.905500</td>
+<td style="text-align: right;">31232798</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">201165058575</td>
+<td style="text-align: right;">3.012560e+11</td>
+<td style="text-align: right;">4.4497814</td>
+<td style="text-align: right;">4.148301</td>
+<td style="text-align: right;">31789685</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">223413837325</td>
+<td style="text-align: right;">3.191091e+11</td>
+<td style="text-align: right;">5.8127224</td>
+<td style="text-align: right;">4.300441</td>
+<td style="text-align: right;">32355644</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">245967590635</td>
+<td style="text-align: right;">3.587888e+11</td>
+<td style="text-align: right;">4.8430870</td>
+<td style="text-align: right;">4.035130</td>
+<td style="text-align: right;">32910967</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">238379861290</td>
+<td style="text-align: right;">3.651777e+11</td>
+<td style="text-align: right;">4.4131874</td>
+<td style="text-align: right;">4.142470</td>
+<td style="text-align: right;">33440596</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malaysia</td>
+<td style="text-align: left;">MY</td>
+<td style="text-align: left;">MYS</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">207798540353</td>
+<td style="text-align: right;">3.374562e+11</td>
+<td style="text-align: right;">-5.4568466</td>
+<td style="text-align: right;">4.203482</td>
+<td style="text-align: right;">33889558</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">36266016498</td>
+<td style="text-align: right;">8.366979e+10</td>
+<td style="text-align: right;">4.3825048</td>
+<td style="text-align: right;">44.192250</td>
+<td style="text-align: right;">79625397</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">32480429837</td>
+<td style="text-align: right;">7.892123e+10</td>
+<td style="text-align: right;">3.0492315</td>
+<td style="text-align: right;">50.992650</td>
+<td style="text-align: right;">81401488</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">33727726965</td>
+<td style="text-align: right;">8.430735e+10</td>
+<td style="text-align: right;">3.7162550</td>
+<td style="text-align: right;">51.603567</td>
+<td style="text-align: right;">83068889</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">36821904273</td>
+<td style="text-align: right;">8.703909e+10</td>
+<td style="text-align: right;">5.0869111</td>
+<td style="text-align: right;">54.203333</td>
+<td style="text-align: right;">84731835</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">39736335346</td>
+<td style="text-align: right;">9.500200e+10</td>
+<td style="text-align: right;">6.5692285</td>
+<td style="text-align: right;">56.039917</td>
+<td style="text-align: right;">86394504</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">44289298774</td>
+<td style="text-align: right;">1.074200e+11</td>
+<td style="text-align: right;">4.9425051</td>
+<td style="text-align: right;">55.085492</td>
+<td style="text-align: right;">88015962</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">52651035880</td>
+<td style="text-align: right;">1.276529e+11</td>
+<td style="text-align: right;">5.3164168</td>
+<td style="text-align: right;">51.314273</td>
+<td style="text-align: right;">89508986</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">59294683204</td>
+<td style="text-align: right;">1.559804e+11</td>
+<td style="text-align: right;">6.5192916</td>
+<td style="text-align: right;">46.148391</td>
+<td style="text-align: right;">91075184</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">60584223734</td>
+<td style="text-align: right;">1.816246e+11</td>
+<td style="text-align: right;">4.3444873</td>
+<td style="text-align: right;">44.323288</td>
+<td style="text-align: right;">92699095</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">53178736402</td>
+<td style="text-align: right;">1.759748e+11</td>
+<td style="text-align: right;">1.4483231</td>
+<td style="text-align: right;">47.679688</td>
+<td style="text-align: right;">94384250</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">68500918812</td>
+<td style="text-align: right;">2.083689e+11</td>
+<td style="text-align: right;">7.3345000</td>
+<td style="text-align: right;">45.109664</td>
+<td style="text-align: right;">96337125</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">68169783856</td>
+<td style="text-align: right;">2.342167e+11</td>
+<td style="text-align: right;">3.8582328</td>
+<td style="text-align: right;">43.313137</td>
+<td style="text-align: right;">98248614</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">71941908435</td>
+<td style="text-align: right;">2.619205e+11</td>
+<td style="text-align: right;">6.8969517</td>
+<td style="text-align: right;">42.228795</td>
+<td style="text-align: right;">100175512</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">74318435289</td>
+<td style="text-align: right;">2.839028e+11</td>
+<td style="text-align: right;">6.7505313</td>
+<td style="text-align: right;">42.446185</td>
+<td style="text-align: right;">102076336</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">81375151612</td>
+<td style="text-align: right;">2.974836e+11</td>
+<td style="text-align: right;">6.3479875</td>
+<td style="text-align: right;">44.395154</td>
+<td style="text-align: right;">103767130</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">83377968054</td>
+<td style="text-align: right;">3.064459e+11</td>
+<td style="text-align: right;">6.3483097</td>
+<td style="text-align: right;">45.502840</td>
+<td style="text-align: right;">105312992</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">84987391168</td>
+<td style="text-align: right;">3.186270e+11</td>
+<td style="text-align: right;">7.1494568</td>
+<td style="text-align: right;">47.492464</td>
+<td style="text-align: right;">106735719</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">97073582742</td>
+<td style="text-align: right;">3.284807e+11</td>
+<td style="text-align: right;">6.9309883</td>
+<td style="text-align: right;">50.403720</td>
+<td style="text-align: right;">108119693</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">104793441904</td>
+<td style="text-align: right;">3.468419e+11</td>
+<td style="text-align: right;">6.3414856</td>
+<td style="text-align: right;">52.661430</td>
+<td style="text-align: right;">109465287</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">106953484846</td>
+<td style="text-align: right;">3.768234e+11</td>
+<td style="text-align: right;">6.1185257</td>
+<td style="text-align: right;">51.795783</td>
+<td style="text-align: right;">110804683</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Philippines</td>
+<td style="text-align: left;">PH</td>
+<td style="text-align: left;">PHL</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">91171559891</td>
+<td style="text-align: right;">3.617511e+11</td>
+<td style="text-align: right;">-9.5182947</td>
+<td style="text-align: right;">49.624096</td>
+<td style="text-align: right;">112081264</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">180961018305</td>
+<td style="text-align: right;">9.607654e+10</td>
+<td style="text-align: right;">9.0383163</td>
+<td style="text-align: right;">1.723963</td>
+<td style="text-align: right;">4027887</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">164227617774</td>
+<td style="text-align: right;">8.979379e+10</td>
+<td style="text-align: right;">-1.0708628</td>
+<td style="text-align: right;">1.791723</td>
+<td style="text-align: right;">4138012</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">170350298338</td>
+<td style="text-align: right;">9.253837e+10</td>
+<td style="text-align: right;">3.9233608</td>
+<td style="text-align: right;">1.790588</td>
+<td style="text-align: right;">4175950</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">197818139656</td>
+<td style="text-align: right;">9.764640e+10</td>
+<td style="text-align: right;">4.5482554</td>
+<td style="text-align: right;">1.742183</td>
+<td style="text-align: right;">4114826</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">246116322768</td>
+<td style="text-align: right;">1.150336e+11</td>
+<td style="text-align: right;">9.9399827</td>
+<td style="text-align: right;">1.690228</td>
+<td style="text-align: right;">4166664</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">287771727539</td>
+<td style="text-align: right;">1.278078e+11</td>
+<td style="text-align: right;">7.3663224</td>
+<td style="text-align: right;">1.664397</td>
+<td style="text-align: right;">4265762</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">338926122121</td>
+<td style="text-align: right;">1.486273e+11</td>
+<td style="text-align: right;">9.0067661</td>
+<td style="text-align: right;">1.588933</td>
+<td style="text-align: right;">4401365</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">385006655157</td>
+<td style="text-align: right;">1.809417e+11</td>
+<td style="text-align: right;">9.0215195</td>
+<td style="text-align: right;">1.507102</td>
+<td style="text-align: right;">4588599</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">443371610356</td>
+<td style="text-align: right;">1.936173e+11</td>
+<td style="text-align: right;">1.8634835</td>
+<td style="text-align: right;">1.414861</td>
+<td style="text-align: right;">4839396</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">370525982888</td>
+<td style="text-align: right;">1.941503e+11</td>
+<td style="text-align: right;">0.1279534</td>
+<td style="text-align: right;">1.454515</td>
+<td style="text-align: right;">4987573</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">474817309469</td>
+<td style="text-align: right;">2.398080e+11</td>
+<td style="text-align: right;">14.5197497</td>
+<td style="text-align: right;">1.363508</td>
+<td style="text-align: right;">5076732</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">568009168564</td>
+<td style="text-align: right;">2.793565e+11</td>
+<td style="text-align: right;">6.2149342</td>
+<td style="text-align: right;">1.257776</td>
+<td style="text-align: right;">5183688</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">580505587048</td>
+<td style="text-align: right;">2.950929e+11</td>
+<td style="text-align: right;">4.4354976</td>
+<td style="text-align: right;">1.249676</td>
+<td style="text-align: right;">5312437</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">600013186286</td>
+<td style="text-align: right;">3.075764e+11</td>
+<td style="text-align: right;">4.8176310</td>
+<td style="text-align: right;">1.251300</td>
+<td style="text-align: right;">5399162</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">604391776173</td>
+<td style="text-align: right;">3.148636e+11</td>
+<td style="text-align: right;">3.9355403</td>
+<td style="text-align: right;">1.267050</td>
+<td style="text-align: right;">5469724</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">549421999164</td>
+<td style="text-align: right;">3.079985e+11</td>
+<td style="text-align: right;">2.9767993</td>
+<td style="text-align: right;">1.374825</td>
+<td style="text-align: right;">5535002</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">525530384077</td>
+<td style="text-align: right;">3.190539e+11</td>
+<td style="text-align: right;">3.5886437</td>
+<td style="text-align: right;">1.381546</td>
+<td style="text-align: right;">5607283</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">589858681681</td>
+<td style="text-align: right;">3.432572e+11</td>
+<td style="text-align: right;">4.5129263</td>
+<td style="text-align: right;">1.380925</td>
+<td style="text-align: right;">5612253</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">671737757276</td>
+<td style="text-align: right;">3.768927e+11</td>
+<td style="text-align: right;">3.5171142</td>
+<td style="text-align: right;">1.348842</td>
+<td style="text-align: right;">5638676</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">664477941705</td>
+<td style="text-align: right;">3.769016e+11</td>
+<td style="text-align: right;">1.3450587</td>
+<td style="text-align: right;">1.364158</td>
+<td style="text-align: right;">5703569</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Singapore</td>
+<td style="text-align: left;">SG</td>
+<td style="text-align: left;">SGP</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">634513916370</td>
+<td style="text-align: right;">3.494884e+11</td>
+<td style="text-align: right;">-3.8697989</td>
+<td style="text-align: right;">1.379742</td>
+<td style="text-align: right;">5685807</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">81953035120</td>
+<td style="text-align: right;">1.263922e+11</td>
+<td style="text-align: right;">4.4552470</td>
+<td style="text-align: right;">40.111803</td>
+<td style="text-align: right;">63007815</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">76088350937</td>
+<td style="text-align: right;">1.202965e+11</td>
+<td style="text-align: right;">3.4442490</td>
+<td style="text-align: right;">44.431900</td>
+<td style="text-align: right;">63651141</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">81447794223</td>
+<td style="text-align: right;">1.343009e+11</td>
+<td style="text-align: right;">6.1490361</td>
+<td style="text-align: right;">42.960083</td>
+<td style="text-align: right;">64266437</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">93686920142</td>
+<td style="text-align: right;">1.522806e+11</td>
+<td style="text-align: right;">7.1892433</td>
+<td style="text-align: right;">41.484617</td>
+<td style="text-align: right;">64868166</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">114062494756</td>
+<td style="text-align: right;">1.728957e+11</td>
+<td style="text-align: right;">6.2893421</td>
+<td style="text-align: right;">40.222415</td>
+<td style="text-align: right;">65452047</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">129498934986</td>
+<td style="text-align: right;">1.893184e+11</td>
+<td style="text-align: right;">4.1876384</td>
+<td style="text-align: right;">40.220130</td>
+<td style="text-align: right;">66017420</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">152293268280</td>
+<td style="text-align: right;">2.217583e+11</td>
+<td style="text-align: right;">4.9678109</td>
+<td style="text-align: right;">37.881983</td>
+<td style="text-align: right;">66567687</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">181094565788</td>
+<td style="text-align: right;">2.629426e+11</td>
+<td style="text-align: right;">5.4351517</td>
+<td style="text-align: right;">34.518181</td>
+<td style="text-align: right;">67102394</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">208095289026</td>
+<td style="text-align: right;">2.913830e+11</td>
+<td style="text-align: right;">1.7256988</td>
+<td style="text-align: right;">33.313301</td>
+<td style="text-align: right;">67619830</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">181530421335</td>
+<td style="text-align: right;">2.817106e+11</td>
+<td style="text-align: right;">-0.6906182</td>
+<td style="text-align: right;">34.285774</td>
+<td style="text-align: right;">68121080</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">226787505596</td>
+<td style="text-align: right;">3.411048e+11</td>
+<td style="text-align: right;">7.5133905</td>
+<td style="text-align: right;">31.685705</td>
+<td style="text-align: right;">68579447</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">262743281925</td>
+<td style="text-align: right;">3.708187e+11</td>
+<td style="text-align: right;">0.8401321</td>
+<td style="text-align: right;">30.491733</td>
+<td style="text-align: right;">69007208</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">274121377629</td>
+<td style="text-align: right;">3.975583e+11</td>
+<td style="text-align: right;">7.2427962</td>
+<td style="text-align: right;">31.083092</td>
+<td style="text-align: right;">69436098</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">282342912104</td>
+<td style="text-align: right;">4.203337e+11</td>
+<td style="text-align: right;">2.6874956</td>
+<td style="text-align: right;">30.725967</td>
+<td style="text-align: right;">69845114</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">278596013717</td>
+<td style="text-align: right;">4.073390e+11</td>
+<td style="text-align: right;">0.9844689</td>
+<td style="text-align: right;">32.479833</td>
+<td style="text-align: right;">70216367</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">271423493718</td>
+<td style="text-align: right;">4.012962e+11</td>
+<td style="text-align: right;">3.1340472</td>
+<td style="text-align: right;">34.247717</td>
+<td style="text-align: right;">70540795</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">277248464807</td>
+<td style="text-align: right;">4.133663e+11</td>
+<td style="text-align: right;">3.4351577</td>
+<td style="text-align: right;">35.296383</td>
+<td style="text-align: right;">70859841</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">304266013738</td>
+<td style="text-align: right;">4.563568e+11</td>
+<td style="text-align: right;">4.1776810</td>
+<td style="text-align: right;">33.939811</td>
+<td style="text-align: right;">71160187</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">328569784687</td>
+<td style="text-align: right;">5.067542e+11</td>
+<td style="text-align: right;">4.2228703</td>
+<td style="text-align: right;">32.310226</td>
+<td style="text-align: right;">71376079</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">323768892197</td>
+<td style="text-align: right;">5.439767e+11</td>
+<td style="text-align: right;">2.1145578</td>
+<td style="text-align: right;">31.047606</td>
+<td style="text-align: right;">71522271</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thailand</td>
+<td style="text-align: left;">TH</td>
+<td style="text-align: left;">THA</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">257709985018</td>
+<td style="text-align: right;">5.004619e+11</td>
+<td style="text-align: right;">-6.0500385</td>
+<td style="text-align: right;">31.293673</td>
+<td style="text-align: right;">71641484</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">38960300</td>
+<td style="text-align: right;">3.669243e+08</td>
+<td style="text-align: right;">58.0780959</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">745088</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">42828900</td>
+<td style="text-align: right;">4.774435e+08</td>
+<td style="text-align: right;">16.3513809</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">812249</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">36638400</td>
+<td style="text-align: right;">4.694555e+08</td>
+<td style="text-align: right;">-6.7036518</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">879159</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">33673900</td>
+<td style="text-align: right;">4.904391e+08</td>
+<td style="text-align: right;">-2.1822641</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">916878</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">32945200</td>
+<td style="text-align: right;">4.407720e+08</td>
+<td style="text-align: right;">0.4000040</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">929074</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">32989600</td>
+<td style="text-align: right;">4.622680e+08</td>
+<td style="text-align: right;">2.9845796</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">948311</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">41881900</td>
+<td style="text-align: right;">4.537924e+08</td>
+<td style="text-align: right;">-4.1160927</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">976597</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">54263000</td>
+<td style="text-align: right;">5.427954e+08</td>
+<td style="text-align: right;">10.2653885</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1004889</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">60613700</td>
+<td style="text-align: right;">6.485236e+08</td>
+<td style="text-align: right;">11.3948048</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1032429</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">66633500</td>
+<td style="text-align: right;">7.269378e+08</td>
+<td style="text-align: right;">10.1469544</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1058782</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">75532300</td>
+<td style="text-align: right;">8.819093e+08</td>
+<td style="text-align: right;">9.3315118</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1084679</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">66782600</td>
+<td style="text-align: right;">1.042535e+09</td>
+<td style="text-align: right;">5.9585397</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1110207</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">82664300</td>
+<td style="text-align: right;">1.160555e+09</td>
+<td style="text-align: right;">4.8606219</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1134885</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">77945700</td>
+<td style="text-align: right;">1.395727e+09</td>
+<td style="text-align: right;">3.1043668</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1158695</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">66178400</td>
+<td style="text-align: right;">1.447535e+09</td>
+<td style="text-align: right;">4.4724985</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1181903</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">48508500</td>
+<td style="text-align: right;">1.590282e+09</td>
+<td style="text-align: right;">2.4800404</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1205131</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">51780000</td>
+<td style="text-align: right;">1.640465e+09</td>
+<td style="text-align: right;">3.0099306</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1228312</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">38179900</td>
+<td style="text-align: right;">1.584878e+09</td>
+<td style="text-align: right;">-3.1824152</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1251703</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">45614300</td>
+<td style="text-align: right;">1.555989e+09</td>
+<td style="text-align: right;">-0.4665022</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1275959</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">431191700</td>
+<td style="text-align: right;">2.032550e+09</td>
+<td style="text-align: right;">24.2128840</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1300945</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Timor-Leste</td>
+<td style="text-align: left;">TL</td>
+<td style="text-align: left;">TLS</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">792950600</td>
+<td style="text-align: right;">2.162619e+09</td>
+<td style="text-align: right;">31.7257417</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1326053</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">16808688578</td>
+<td style="text-align: right;">3.117252e+10</td>
+<td style="text-align: right;">6.7873164</td>
+<td style="text-align: right;">14167.750000</td>
+<td style="text-align: right;">77154011</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2001</td>
+<td style="text-align: right;">17997102361</td>
+<td style="text-align: right;">3.268520e+10</td>
+<td style="text-align: right;">6.1928933</td>
+<td style="text-align: right;">14725.166667</td>
+<td style="text-align: right;">77969361</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2002</td>
+<td style="text-align: right;">19193787587</td>
+<td style="text-align: right;">3.506411e+10</td>
+<td style="text-align: right;">6.3208210</td>
+<td style="text-align: right;">15279.500000</td>
+<td style="text-align: right;">78772224</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2003</td>
+<td style="text-align: right;">22415697836</td>
+<td style="text-align: right;">3.955251e+10</td>
+<td style="text-align: right;">6.8990635</td>
+<td style="text-align: right;">15509.583333</td>
+<td style="text-align: right;">79563777</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2004</td>
+<td style="text-align: right;">27134530700</td>
+<td style="text-align: right;">4.542785e+10</td>
+<td style="text-align: right;">7.5364106</td>
+<td style="text-align: right;">15746.000000</td>
+<td style="text-align: right;">80338971</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">36712091515</td>
+<td style="text-align: right;">5.763326e+10</td>
+<td style="text-align: right;">7.5472477</td>
+<td style="text-align: right;">15858.916667</td>
+<td style="text-align: right;">81088313</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">44944777029</td>
+<td style="text-align: right;">6.637166e+10</td>
+<td style="text-align: right;">6.9779548</td>
+<td style="text-align: right;">15994.250000</td>
+<td style="text-align: right;">82167897</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">54591007521</td>
+<td style="text-align: right;">7.741443e+10</td>
+<td style="text-align: right;">7.1295045</td>
+<td style="text-align: right;">16105.125000</td>
+<td style="text-align: right;">83633375</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">69724976614</td>
+<td style="text-align: right;">9.913030e+10</td>
+<td style="text-align: right;">5.6617712</td>
+<td style="text-align: right;">16302.250000</td>
+<td style="text-align: right;">85175788</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">66374595301</td>
+<td style="text-align: right;">1.060147e+11</td>
+<td style="text-align: right;">5.3978975</td>
+<td style="text-align: right;">17065.083333</td>
+<td style="text-align: right;">86460018</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">79747480853</td>
+<td style="text-align: right;">1.472012e+11</td>
+<td style="text-align: right;">6.4232448</td>
+<td style="text-align: right;">18612.916667</td>
+<td style="text-align: right;">87455152</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">105593919858</td>
+<td style="text-align: right;">1.725950e+11</td>
+<td style="text-align: right;">6.4131689</td>
+<td style="text-align: right;">20509.750000</td>
+<td style="text-align: right;">88468314</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">124149069364</td>
+<td style="text-align: right;">1.955907e+11</td>
+<td style="text-align: right;">5.5045447</td>
+<td style="text-align: right;">20828.000000</td>
+<td style="text-align: right;">89510356</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">142758439316</td>
+<td style="text-align: right;">2.137088e+11</td>
+<td style="text-align: right;">5.5535108</td>
+<td style="text-align: right;">20933.416667</td>
+<td style="text-align: right;">90573104</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">162478898406</td>
+<td style="text-align: right;">2.334515e+11</td>
+<td style="text-align: right;">6.4222431</td>
+<td style="text-align: right;">21148.000000</td>
+<td style="text-align: right;">91679578</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">174473996313</td>
+<td style="text-align: right;">2.392583e+11</td>
+<td style="text-align: right;">6.9871543</td>
+<td style="text-align: right;">21697.567500</td>
+<td style="text-align: right;">92823254</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">190526869545</td>
+<td style="text-align: right;">2.570960e+11</td>
+<td style="text-align: right;">6.6900089</td>
+<td style="text-align: right;">21935.000833</td>
+<td style="text-align: right;">94000117</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">230041803530</td>
+<td style="text-align: right;">2.813536e+11</td>
+<td style="text-align: right;">6.9401904</td>
+<td style="text-align: right;">22370.086667</td>
+<td style="text-align: right;">95176977</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">261802606599</td>
+<td style="text-align: right;">3.101065e+11</td>
+<td style="text-align: right;">7.4650069</td>
+<td style="text-align: right;">22602.050000</td>
+<td style="text-align: right;">96237319</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">284737397483</td>
+<td style="text-align: right;">3.343653e+11</td>
+<td style="text-align: right;">7.3592627</td>
+<td style="text-align: right;">23050.241667</td>
+<td style="text-align: right;">97173776</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Viet Nam</td>
+<td style="text-align: left;">VN</td>
+<td style="text-align: left;">VNM</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">292479899129</td>
+<td style="text-align: right;">3.466157e+11</td>
+<td style="text-align: right;">2.8654132</td>
+<td style="text-align: right;">23208.368333</td>
+<td style="text-align: right;">98079191</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+<p>Sumber data: World Bank.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="WorldBank.jpg" class="img-fluid figure-img" style="width:30.0%" alt="Logo World Bank."></p>
+<figcaption class="figure-caption">Logo World Bank</figcaption>
+</figure>
+</div>
+<p>Tabel data yang digunakan dalam penelitian ini mencakup data tahunan dari negara-negara ASEAN untuk periode 2000 hingga 2020. Data diambil dari World Bank melalui library WDI di R, mencakup indikator ekonomi makro yang relevan. Berikut adalah penjelasan setiap variabel yang terdapat dalam tabel:</p>
+<ul>
+<li><p>iso3c: Kode ISO 3 huruf untuk setiap negara (contoh: IDN untuk Indonesia, MYS untuk Malaysia). Variabel ini digunakan sebagai identitas unik tiap negara dalam analisis data panel.</p></li>
+<li><p>year: Tahun observasi, mencakup rentang dari 2000 hingga 2020. Variabel ini berfungsi untuk menganalisis tren data secara waktu.</p></li>
+<li><p>export: Nilai ekspor dalam US Dollar (USD). Variabel ini merupakan variabel dependen dalam model regresi, yang dianalisis pengaruhnya terhadap variabel independen lainnya.</p></li>
+<li><p>gdp_total: Produk Domestik Bruto (GDP) Total dalam USD. Variabel ini mencerminkan kekuatan ekonomi suatu negara dan digunakan sebagai salah satu variabel independen.</p></li>
+<li><p>gdp_growth: Pertumbuhan GDP tahunan dalam persen (%). Variabel ini digunakan untuk menangkap dinamika ekonomi setiap negara dari waktu ke waktu.</p></li>
+<li><p>exchange_rate: Nilai tukar mata uang domestik terhadap USD. Variabel ini memengaruhi daya saing harga barang ekspor di pasar internasional.</p></li>
+<li><p>population: Jumlah populasi total dari setiap negara. Variabel ini digunakan untuk mencerminkan kapasitas pasar domestik dan tenaga kerja.</p></li>
+<li><p>middle_income: Variabel dummy yang menunjukkan status pendapatan menengah suatu negara, dengan nilai:</p>
+<ul>
+<li><p>0: Negara dengan pendapatan di luar kategori middle income. bisa dibawah income menengah maupun diatas menengah.</p></li>
+<li><p>1: Negara dengan pendapatan dalam kategori middle income, berdasarkan threshold GDP Total tertentu.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="plot-visualisasi-data" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="plot-visualisasi-data"><span class="header-section-number">3.2</span> Plot (Visualisasi Data)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram distribusi ekspor berdasarkan status middle income</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_clean, <span class="fu">aes</span>(<span class="at">x =</span> export, <span class="at">fill =</span> <span class="fu">factor</span>(middle_income))) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1000000000</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sebaran Ekspor Berdasarkan Status Middle Income"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Ekspor (US$)"</span>, <span class="at">y =</span> <span class="st">"Frekuensi"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Middle Income Status"</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Plot Sebaran Middle Income</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Dari histogram yang ditampilkan, dapat dilihat distribusi ekspor berdasarkan status middle income (0 = Non-middle income, 1 = Middle income). Berikut adalah interpretasi singkatnya:</p>
+<ul>
+<li><p><strong>Non-middle income (status 0):</strong></p></li>
+<li><p>Sebagian besar negara dalam kategori ini memiliki nilai ekspor yang sangat rendah, dengan beberapa nilai yang sangat kecil (dekat dengan 0).</p></li>
+<li><p>Frekuensi ekspor pada nilai rendah lebih banyak dibandingkan dengan ekspor yang lebih tinggi, yang menunjukkan bahwa sebagian besar negara non-middle income memiliki ekspor yang terbatas.</p></li>
+</ul>
+<p><strong>Middle income (status 1):</strong></p>
+<ul>
+<li><p>Negara dengan status middle income memiliki nilai ekspor yang jauh lebih tinggi. Distribusi ekspor untuk negara-negara ini terlihat lebih terdistribusi dan cenderung memiliki lebih banyak nilai yang tersebar di rentang yang lebih tinggi.</p></li>
+<li><p>Meskipun ada nilai yang lebih kecil, jumlah negara middle income yang memiliki ekspor tinggi lebih banyak, menunjukkan bahwa status middle income cenderung berhubungan dengan ekspor yang lebih besar.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot untuk ekspor vs GDP Total</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_clean, <span class="fu">aes</span>(<span class="at">x =</span> gdp_total, <span class="at">y =</span> export, <span class="at">color =</span> <span class="fu">factor</span>(middle_income))) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ekspor vs GDP Total"</span>, <span class="at">x =</span> <span class="st">"GDP Total (US$)"</span>, <span class="at">y =</span> <span class="st">"Ekspor (US$)"</span>, <span class="at">color =</span> <span class="st">"Middle Income Status"</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot untuk ekspor vs GDP Growth</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_clean, <span class="fu">aes</span>(<span class="at">x =</span> gdp_growth, <span class="at">y =</span> export, <span class="at">color =</span> <span class="fu">factor</span>(middle_income))) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ekspor vs Pertumbuhan GDP"</span>, <span class="at">x =</span> <span class="st">"Pertumbuhan GDP (%)"</span>, <span class="at">y =</span> <span class="st">"Ekspor (US$)"</span>, <span class="at">color =</span> <span class="st">"Middle Income Status"</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot untuk ekspor vs Exchange Rate</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_clean, <span class="fu">aes</span>(<span class="at">x =</span> exchange_rate, <span class="at">y =</span> export, <span class="at">color =</span> <span class="fu">factor</span>(middle_income))) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ekspor vs Nilai Tukar"</span>, <span class="at">x =</span> <span class="st">"Nilai Tukar"</span>, <span class="at">y =</span> <span class="st">"Ekspor (US$)"</span>, <span class="at">color =</span> <span class="st">"Middle Income Status"</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot untuk ekspor vs Population</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_clean, <span class="fu">aes</span>(<span class="at">x =</span> population, <span class="at">y =</span> export, <span class="at">color =</span> <span class="fu">factor</span>(middle_income))) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ekspor vs Populasi"</span>, <span class="at">x =</span> <span class="st">"Populasi"</span>, <span class="at">y =</span> <span class="st">"Ekspor (US$)"</span>, <span class="at">color =</span> <span class="st">"Middle Income Status"</span>) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1,p2,p3,p4, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Plot Dependen vs Independen</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Dari scatter plot yang ditampilkan, berikut adalah interpretasi masing-masing plot:</p>
+<p><strong>1. Ekspor vs GDP Total</strong></p>
+<ul>
+<li><p>Status Middle Income (1): Negara dengan status middle income (ditandai dengan warna biru) menunjukkan hubungan positif yang jelas antara GDP Total dan Ekspor. Semakin tinggi GDP Total suatu negara, semakin besar ekspor yang tercatat, dengan banyak negara middle income yang memiliki ekspor yang sangat tinggi.</p></li>
+<li><p>Status Non-Middle Income (0): Negara non-middle income (ditandai dengan warna merah) cenderung memiliki GDP Total yang rendah dan ekspor yang lebih kecil, dengan beberapa pengecualian.</p></li>
+</ul>
+<p><strong>2. Ekspor vs Pertumbuhan GDP</strong></p>
+<ul>
+<li><p><strong>Status Middle Income (1):</strong> Negara-negara middle income menunjukkan variasi ekspor yang lebih luas dengan pertumbuhan GDP yang lebih tinggi. Meskipun ada beberapa negara dengan pertumbuhan GDP tinggi, ekspor mereka tidak selalu sebanding, menunjukkan bahwa faktor-faktor lain (seperti kebijakan ekonomi atau pasar) mungkin memengaruhi ekspor.</p></li>
+<li><p><strong>Status Non-Middle Income (0):</strong> Negara dengan status non-middle income memiliki variasi ekspor yang lebih terbatas meskipun ada beberapa negara yang menunjukkan ekspor tinggi dengan pertumbuhan GDP yang relatif rendah.</p></li>
+</ul>
+<p><strong>3. Ekspor vs Nilai Tukar</strong></p>
+<ul>
+<li><p><strong>Status Middle Income (1):</strong> Negara dengan status middle income terlihat memiliki variasi ekspor yang lebih besar, meskipun hubungan antara nilai tukar dan ekspor tampaknya tidak terlalu jelas. Hal ini menunjukkan bahwa perubahan nilai tukar mungkin tidak selalu secara langsung mempengaruhi ekspor pada negara middle income.</p></li>
+<li><p><strong>Status Non-Middle Income (0):</strong> Negara non-middle income lebih banyak yang memiliki nilai tukar rendah dan nilai ekspor sangat terbatas, dengan hanya sedikit negara yang menunjukkan ekspor signifikan meskipun memiliki nilai tukar rendah.</p></li>
+</ul>
+<p><strong>4. Ekspor vs Populasi</strong></p>
+<ul>
+<li><p><strong>Status Middle Income (1):</strong> Negara dengan status middle income menunjukkan variasi ekspor yang lebih besar dengan populasi yang lebih tinggi. Hal ini mengindikasikan bahwa negara dengan populasi besar mungkin memiliki kapasitas ekonomi yang lebih besar, yang mendukung volume ekspor yang lebih tinggi.</p></li>
+<li><p><strong>Status Non-Middle Income (0):</strong> Negara non-middle income yang memiliki populasi besar cenderung memiliki ekspor yang lebih kecil, yang mungkin disebabkan oleh keterbatasan sumber daya ekonomi dan infrastruktur.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Korelasi Antar Variabel</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung korelasi antar variabel</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(data_clean[, <span class="fu">c</span>(<span class="st">"export"</span>, <span class="st">"gdp_total"</span>, <span class="st">"gdp_growth"</span>, <span class="st">"exchange_rate"</span>, <span class="st">"population"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisasi heatmap korelasi</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(cor_matrix, <span class="at">method =</span> <span class="st">"color"</span>, </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Korelasi Antara Variabel untuk Regresi Multivariat"</span>, </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">addCoef.col =</span> <span class="st">"black"</span>, <span class="at">number.cex =</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Plot Korelasi Heatmap</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Berdasarkan plot korelasi diatas, dapat di-interpretasikan sebagai berikut</p>
+<ul>
+<li><p><strong>Ekspor vs GDP Total</strong>:</p>
+<ul>
+<li><strong>Korelasi positif (0.51)</strong>: Terdapat korelasi positif sedang antara ekspor dan GDP Total. Artinya, semakin tinggi GDP Total suatu negara, semakin besar nilai ekspor yang dihasilkan. Ini menunjukkan bahwa negara dengan ekonomi yang lebih besar cenderung memiliki ekspor yang lebih tinggi.</li>
+</ul></li>
+<li><p><strong>Ekspor vs GDP Growth</strong>:</p>
+<ul>
+<li><strong>Korelasi negatif (-0.1)</strong>: Tidak ada korelasi yang kuat antara ekspor dan pertumbuhan GDP. Nilai yang rendah dan negatif menunjukkan bahwa pertumbuhan ekonomi tidak memiliki hubungan signifikan dengan nilai ekspor, yang bisa berarti bahwa ekspor tidak sepenuhnya dipengaruhi oleh pertumbuhan ekonomi.</li>
+</ul></li>
+<li><p><strong>Ekspor vs Nilai Tukar</strong>:</p>
+<ul>
+<li><strong>Korelasi negatif (-0.03)</strong>: Ekspor dan nilai tukar memiliki korelasi yang sangat lemah dan negatif, menunjukkan bahwa perubahan nilai tukar hampir tidak mempengaruhi nilai ekspor secara signifikan di negara-negara yang dianalisis.</li>
+</ul></li>
+<li><p><strong>Ekspor vs Populasi</strong>:</p>
+<ul>
+<li><strong>Korelasi positif (0.06)</strong>: Korelasi yang sangat lemah menunjukkan bahwa populasi hampir tidak mempengaruhi ekspor. Meskipun ada sedikit kecenderungan positif, hubungan ini tidak cukup signifikan.</li>
+</ul></li>
+<li><p><strong>GDP Total vs GDP Growth</strong>:</p>
+<ul>
+<li><strong>Korelasi negatif (-0.1)</strong>: Terdapat korelasi yang sangat lemah dan negatif antara GDP Total dan pertumbuhan GDP. Hal ini menunjukkan bahwa meskipun GDP Total lebih tinggi, pertumbuhan GDP tidak selalu sejalan dengan ukuran ekonomi yang lebih besar.</li>
+</ul></li>
+<li><p><strong>GDP Total vs Nilai Tukar</strong>:</p>
+<ul>
+<li><strong>Korelasi positif (0.29)</strong>: Terdapat korelasi positif lemah antara GDP Total dan nilai tukar. Hal ini bisa menunjukkan bahwa negara dengan GDP yang lebih besar mungkin memiliki nilai tukar yang lebih stabil atau lebih kuat, meskipun hubungan ini cukup lemah.</li>
+</ul></li>
+<li><p><strong>GDP Total vs Populasi</strong>:</p>
+<ul>
+<li><strong>Korelasi positif sangat kuat (0.76)</strong>: Ini menunjukkan korelasi yang sangat kuat antara GDP Total dan populasi. Negara dengan populasi besar cenderung memiliki ekonomi yang lebih besar, yang dapat mengindikasikan bahwa jumlah penduduk berperan besar dalam produksi ekonomi.</li>
+</ul></li>
+<li><p><strong>GDP Growth vs Nilai Tukar</strong>:</p>
+<ul>
+<li><strong>Korelasi positif lemah (0.09)</strong>: Korelasi antara pertumbuhan GDP dan nilai tukar sangat lemah dan positif, yang berarti bahwa perubahan pertumbuhan ekonomi tidak berpengaruh banyak pada fluktuasi nilai tukar.</li>
+</ul></li>
+<li><p><strong>GDP Growth vs Populasi</strong>:</p>
+<ul>
+<li><strong>Korelasi positif sangat lemah (0.02)</strong>: Pertumbuhan GDP memiliki korelasi yang sangat lemah dengan populasi, menunjukkan bahwa jumlah penduduk hampir tidak mempengaruhi pertumbuhan ekonomi dalam hal ekspor atau GDP.</li>
+</ul></li>
+<li><p><strong>Nilai Tukar vs Populasi</strong>:</p>
+<ul>
+<li><strong>Korelasi positif moderat (0.55)</strong>: Terdapat korelasi positif sedang antara nilai tukar dan populasi, yang dapat menunjukkan bahwa negara dengan populasi yang lebih besar mungkin memiliki pasar yang lebih besar dan, akibatnya, nilai tukar yang lebih kuat.</li>
+</ul></li>
+</ul>
+<p>GDP Total adalah faktor utama yang berhubungan dengan ekspor dan populasi, menunjukkan bahwa negara dengan GDP lebih besar cenderung memiliki kinerja ekspor yang lebih baik. Pertumbuhan GDP dan nilai tukar tampaknya tidak memiliki hubungan yang signifikan dengan ekspor, yang menunjukkan bahwa faktor lain mungkin lebih penting dalam menentukan volume ekspor. Populasi memiliki korelasi kuat dengan GDP Total, menunjukkan bahwa negara dengan populasi besar umumnya memiliki ekonomi yang lebih besar.</p>
+</section>
+<section id="metode-analisis" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="metode-analisis"><span class="header-section-number">3.3</span> Metode analisis</h3>
+<p>Metode yang dipilih dalam penelitian ini adalah Regresi Multivariat, Regresi Dummy dan Fixed Effects yang dilakukan dengan menganalisis hubungan antara faktor-faktor ekonomi suatu negara (seperti GDP Total, pertumbuhan GDP, nilai tukar, dan populasi) terhadap nilai ekspor negara-negara ASEAN. Spesifikasi yang dilakukan adalah:</p>
+<p><em>Model Regresi Multivariat &amp; Dummy</em></p>
+<p><span class="math display">\[
+\text{Ekspor}\_i = \beta\_0 + \beta\_1 \cdot \text{GDP Total}\_i +
+\beta\_2 \cdot \text{Pertumbuhan GDP}\_i + \beta\_3
+\cdot \text{Nilai Tukar}\_i + \beta\_4 \cdot \text{Populasi}\_i +
+\beta\_5 \cdot \text{Middle Income}\_i + \epsilon\_i
+\]</span></p>
+<p>Di mana:</p>
+<ul>
+<li><p><span class="math inline">\(\text{Ekspor}_i\)</span> : Ekspor negara <span class="math inline">\(i\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{GDP Total}_i\)</span> : GDP total negara <span class="math inline">\(i\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{Pertumbuhan GDP}_i\)</span> : Pertumbuhan GDP negara <span class="math inline">\(i\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{Nilai Tukar}_i\)</span> : Nilai tukar negara <span class="math inline">\(i\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{Populasi}_i\)</span> : Populasi negara <span class="math inline">\(i\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{Middle Income}_i\)</span> : Variabel dummy yang bernilai 1 jika negara <span class="math inline">\(i\)</span> termasuk dalam kategori middle income, dan 0 jika negara tersebut tidak (non-middle income).</p></li>
+<li><p><span class="math inline">\(\beta_0\)</span> : Intercept (konstanta).</p></li>
+<li><p><span class="math inline">\(\beta_1, \beta_2, \beta_3, \beta_4, \beta_5\)</span> : Koefisien regresi yang menunjukkan pengaruh setiap variabel independen terhadap ekspor</p></li>
+<li><p><span class="math inline">\(\epsilon_{ij}\)</span> : Error term</p></li>
+</ul>
+<p><em>Model Fixed Effects</em></p>
+<p><span class="math display">\[
+\text{Ekspor}_{it} = \alpha_i + \beta_1 \cdot \text{GDP Total}_{it} + \beta_2 \cdot \text{Pertumbuhan GDP}_{it} + \beta_3 \cdot \text{Nilai Tukar}_{it} + \beta_4 \cdot \text{Populasi}_{it} + \epsilon_{it}
+\]</span> Di mana:</p>
+<ul>
+<li><p><span class="math inline">\(\text{Ekspor}_{it}\)</span> : Ekspor negara <span class="math inline">\(i\)</span> pada waktu <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(\alpha_i\)</span> : Efek tetap (fixed effect) untuk setiap negara, yang mengontrol perbedaan yang tidak teramati antar negara (misalnya kebijakan ekonomi atau faktor struktural).</p></li>
+<li><p><span class="math inline">\(\epsilon_{it}\)</span> : Error term untuk negara <span class="math inline">\(i\)</span> pada waktu <span class="math inline">\(t\)</span>.</p></li>
+</ul>
+</section>
+<section id="analisis-masalah" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="analisis-masalah"><span class="header-section-number">3.4</span> Analisis Masalah</h3>
+<section id="regresi" class="level4" data-number="3.4.1">
+<h4 data-number="3.4.1" class="anchored" data-anchor-id="regresi"><span class="header-section-number">3.4.1</span> Regresi</h4>
+<section id="regresi-multivariat" class="level5" data-number="3.4.1.1">
+<h5 data-number="3.4.1.1" class="anchored" data-anchor-id="regresi-multivariat"><span class="header-section-number">3.4.1.1</span> Regresi Multivariat</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: Regresi multivariat dengan variabel kontrol</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(export <span class="sc">~</span> middle_income <span class="sc">+</span> gdp_total <span class="sc">+</span> gdp_growth <span class="sc">+</span> exchange_rate <span class="sc">+</span> population, <span class="at">data =</span> data_clean)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = export ~ middle_income + gdp_total + gdp_growth + 
+    exchange_rate + population, data = data_clean)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-2.082e+11 -5.705e+10 -4.358e+09  1.049e+10  3.093e+11 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   -5.444e+09  1.978e+10  -0.275    0.783    
+middle_income  1.159e+11  2.115e+10   5.479  1.4e-07 ***
+gdp_total      6.845e-01  4.918e-02  13.917  &lt; 2e-16 ***
+gdp_growth     1.204e+09  1.254e+09   0.960    0.338    
+exchange_rate  1.884e+06  1.373e+06   1.372    0.172    
+population    -1.809e+03  1.718e+02 -10.530  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 9.843e+10 on 183 degrees of freedom
+Multiple R-squared:  0.5975,    Adjusted R-squared:  0.5865 
+F-statistic: 54.34 on 5 and 183 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>interpretasi untuk setiap variabel dalam model regresi multivariat yang diberikan:</p>
+<p><strong>1. Intercept (</strong><span class="math inline">\(\beta_0\)</span>)</p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(−5.444×10^9\)</span></p></li>
+<li><p><strong>P-value</strong>: <span class="math inline">\(0.783\)</span> (tidak signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Intercept pada model ini tidak signifikan, artinya ketika semua variabel independen (middle income, GDP Total, GDP Growth, nilai tukar, dan populasi) bernilai 0, nilai ekspor tidak dapat diprediksi dengan tepat menggunakan model ini. Karena nilai p lebih besar dari 0.05, kita tidak bisa menarik kesimpulan dari intercept ini.</p></li>
+</ul>
+<p><strong>2. Middle Income (Variabel Dummy)</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(1.159×10^{11}\)</span></p></li>
+<li><p><strong>P-value</strong>: <span class="math inline">\(1.4×10^{−7}\)</span>(signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Negara dengan status middle income diperkirakan memiliki ekspor yang lebih besar sebesar <span class="math inline">\(1.159×10^{11}\)</span> dibandingkan negara non-middle income. Koefisien ini sangat signifikan (p-value sangat kecil), yang menunjukkan bahwa status middle income berpengaruh besar terhadap volume ekspor suatu negara.</p></li>
+</ul>
+<p><strong>3. GDP Total</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: 0.6845</p></li>
+<li><p><strong>P-value</strong>: <span class="math inline">\(&lt; 2×10^{−16}\)</span> (signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: GDP Total memiliki pengaruh positif yang sangat kuat terhadap ekspor. Setiap peningkatan 1 unit dalam GDP Total diperkirakan akan meningkatkan ekspor sebesar 0.6845. Hubungan ini sangat signifikan (p-value sangat kecil), yang mengindikasikan bahwa semakin besar ekonomi suatu negara, semakin besar pula ekspor yang dihasilkan.</p></li>
+</ul>
+<p><strong>4. GDP Growth</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(1.204×10^9\)</span></p></li>
+<li><p><strong>P-value</strong>: 0.338 (tidak signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Pertumbuhan GDP tidak menunjukkan pengaruh yang signifikan terhadap ekspor, dengan p-value yang lebih besar dari 0.05. Ini menunjukkan bahwa meskipun ekonomi tumbuh, hal itu tidak selalu tercermin dalam peningkatan ekspor, mungkin karena faktor-faktor lain seperti kebijakan ekonomi atau kondisi pasar internasional yang mempengaruhi ekspor.</p></li>
+</ul>
+<p><strong>5. Exchange Rate</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(1.884×10^6\)</span></p></li>
+<li><p><strong>P-value</strong>: 0.172 (tidak signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Nilai tukar tidak menunjukkan pengaruh yang signifikan terhadap ekspor, dengan p-value lebih besar dari 0.05. Meskipun ada hubungan positif, nilai tukar tidak berpengaruh signifikan terhadap ekspor dalam model ini, yang menunjukkan bahwa faktor lain lebih dominan dalam memengaruhi ekspor.</p></li>
+</ul>
+<p><strong>6. Population</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(−1.809×10^3\)</span></p></li>
+<li><p><strong>P-value</strong>: <span class="math inline">\(&lt;2×10^{−16}\)</span> (signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Populasi memiliki pengaruh negatif yang signifikan terhadap ekspor. Koefisien negatif menunjukkan bahwa dengan setiap peningkatan 1 unit dalam populasi, ekspor diperkirakan akan menurun sebesar <span class="math inline">\(1.809×10^3\)</span>. Ini bisa disebabkan oleh keterbatasan sumber daya atau infrastruktur yang mempengaruhi kemampuan negara dengan populasi besar untuk melakukan ekspor secara efisien.</p></li>
+</ul>
+<p><strong>Kesimpulan Regresi</strong></p>
+<ul>
+<li><p>Middle income, GDP Total, dan Populasi memiliki pengaruh signifikan terhadap ekspor.</p></li>
+<li><p>GDP Total dan status middle income berhubungan positif dengan ekspor, sementara populasi berhubungan negatif dengan ekspor.</p></li>
+<li><p>Pertumbuhan GDP dan nilai tukar tidak menunjukkan hubungan signifikan dengan ekspor dalam model ini.</p></li>
+</ul>
+</section>
+<section id="regresi-fixed-effects" class="level5" data-number="3.4.1.2">
+<h5 data-number="3.4.1.2" class="anchored" data-anchor-id="regresi-fixed-effects"><span class="header-section-number">3.4.1.2</span> Regresi Fixed Effects</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: Fixed Effects untuk mengontrol efek spesifik negara</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pdata <span class="ot">&lt;-</span> <span class="fu">pdata.frame</span>(data_clean, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"country"</span>, <span class="st">"year"</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model_fixed <span class="ot">&lt;-</span> <span class="fu">plm</span>(export <span class="sc">~</span> middle_income <span class="sc">+</span> gdp_growth <span class="sc">+</span> exchange_rate <span class="sc">+</span> population, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> pdata, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">model =</span> <span class="st">"within"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_fixed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Oneway (individual) effect Within Model
+
+Call:
+plm(formula = export ~ middle_income + gdp_growth + exchange_rate + 
+    population, data = pdata, model = "within")
+
+Balanced Panel: n = 9, T = 21, N = 189
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-2.77e+11 -1.00e+10 -2.26e+08  0.00e+00  1.54e+10  2.28e+11 
+
+Coefficients:
+                 Estimate  Std. Error t-value  Pr(&gt;|t|)    
+middle_income  6.5255e+08  2.4038e+10  0.0271 0.9783738    
+gdp_growth    -6.7346e+08  9.2762e+08 -0.7260 0.4687957    
+exchange_rate  1.1586e+07  5.1948e+06  2.2303 0.0269947 *  
+population     3.2143e+03  8.7655e+02  3.6670 0.0003248 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Total Sum of Squares:    1.0863e+24
+Residual Sum of Squares: 8.5149e+23
+R-Squared:      0.21615
+Adj. R-Squared: 0.1627
+F-statistic: 12.1329 on 4 and 176 DF, p-value: 9.8667e-09</code></pre>
+</div>
+</div>
+<p>Berikut adalah interpretasi dari hasil regresi fixed effects (plm):</p>
+<p><strong>1. Middle Income (Variabel Dummy)</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(6.5255×10^8\)</span></p></li>
+<li><p><strong>P-value</strong>: 0.978 (tidak signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Variabel middle income tidak berpengaruh signifikan terhadap ekspor dalam model fixed effects ini. P-value yang sangat tinggi menunjukkan bahwa status middle income tidak mempengaruhi ekspor secara signifikan setelah mengontrol efek individu (negara). Meskipun koefisien positif, hasil ini tidak cukup kuat untuk menarik kesimpulan.</p></li>
+</ul>
+<p><strong>2. GDP Growth</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(−6.7346×10^8\)</span></p></li>
+<li><p><strong>P-value</strong>: 0.4688 (tidak signifikan)</p></li>
+<li><p><strong>Interpretasi</strong>: Pertumbuhan GDP juga tidak menunjukkan pengaruh signifikan terhadap ekspor, dengan p-value lebih besar dari 0.05. Hal ini menunjukkan bahwa meskipun ekonomi tumbuh, tidak ada hubungan yang signifikan antara <strong>pertumbuhan GDP</strong> dan <strong>nilai ekspor</strong> dalam model ini.</p></li>
+</ul>
+<p><strong>3. Exchange Rate</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(1.1586×10^7\)</span></p></li>
+<li><p><strong>P-value</strong>: 0.0270 (signifikan pada level 5%)</p></li>
+<li><p><strong>Interpretasi</strong>: Nilai tukar memiliki pengaruh positif yang signifikan terhadap ekspor, dengan koefisien <span class="math inline">\(1.1586×10^7\)</span>. Hasil ini menunjukkan bahwa peningkatan nilai tukar dapat mendorong peningkatan ekspor. P-value yang lebih kecil dari 0.05 menunjukkan bahwa hasil ini signifikan secara statistik.</p></li>
+</ul>
+<p><strong>4. Population</strong></p>
+<ul>
+<li><p><strong>Koefisien</strong>: <span class="math inline">\(3.2143×10^3\)</span></p></li>
+<li><p><strong>P-value</strong>: 0.0003248 (signifikan pada level 1%)</p></li>
+<li><p><strong>Interpretasi</strong>: Populasi memiliki pengaruh positif yang sangat signifikan terhadap ekspor. Koefisien sebesar <span class="math inline">\(3.2143×10^3\)</span> menunjukkan bahwa dengan setiap peningkatan dalam populasi, ekspor negara diperkirakan akan meningkat sebesar <span class="math inline">\(3.2143×10^3\)</span>. P-value yang sangat kecil mengindikasikan bahwa pengaruh populasi terhadap ekspor sangat signifikan.</p></li>
+</ul>
+<p><strong>Kesimpulan Regresi</strong></p>
+<ul>
+<li><p>Middle income dan pertumbuhan GDP tidak memiliki pengaruh signifikan terhadap ekspor setelah mempertimbangkan efek tetap antar negara.</p></li>
+<li><p>Nilai tukar dan populasi memiliki pengaruh yang signifikan terhadap ekspor, dengan nilai tukar mendorong peningkatan ekspor dan populasi yang lebih besar berhubungan dengan ekspor yang lebih tinggi.</p></li>
+<li><p>Model ini dapat menjelaskan sekitar 21.6% variasi dalam ekspor, menunjukkan bahwa meskipun model ini memberikan wawasan penting, masih ada faktor lain yang mempengaruhi ekspor yang tidak tercakup dalam analisis ini.</p></li>
+</ul>
+</section>
+<section id="plot-regresi" class="level5" data-number="3.4.1.3">
+<h5 data-number="3.4.1.3" class="anchored" data-anchor-id="plot-regresi"><span class="header-section-number">3.4.1.3</span> Plot Regresi</h5>
+<p><strong>Plot Regresi Multivariat</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Atur layout untuk 3 baris dan 1 kolom</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Scatter Plot Ekspor vs Prediksi (Model Regresi)</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>prediksi_model1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1)  <span class="co"># prediksi dari model</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot: Ekspor aktual vs Prediksi</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prediksi_model1, data_clean<span class="sc">$</span>export, </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ekspor vs Prediksi (Model Regresi)"</span>, </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Prediksi Ekspor"</span>, <span class="at">ylab =</span> <span class="st">"Ekspor Aktual"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(data_clean<span class="sc">$</span>export <span class="sc">~</span> prediksi_model1), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2: Residuals Plot (Model Regresi)</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>residuals_model1 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(model1)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual plot: Residuals vs Prediksi</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prediksi_model1, residuals_model1, </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Residuals vs Prediksi (Model Regresi)"</span>, </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Prediksi Ekspor"</span>, <span class="at">ylab =</span> <span class="st">"Residuals"</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 3: Bar Plot Koefisien Model Regresi</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>coef_model1 <span class="ot">&lt;-</span> <span class="fu">summary</span>(model1)<span class="sc">$</span>coefficients[, <span class="dv">1</span>]</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>coef_model1_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Variable =</span> <span class="fu">names</span>(coef_model1), <span class="at">Coefficient =</span> coef_model1)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot untuk koefisien</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(coef_model1_df<span class="sc">$</span>Coefficient, <span class="at">names.arg =</span> coef_model1_df<span class="sc">$</span>Variable, </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Koefisien Model Regresi"</span>, </span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.names =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Berdasarkan hasil plot yang ditampilkan, berikut adalah interpretasi untuk setiap plot:</p>
+<p><strong>1. Plot Ekspor vs Prediksi (Model Regresi)</strong></p>
+<ul>
+<li><p>Scatter plot ini menunjukkan hubungan antara ekspor aktual dan ekspor yang diprediksi oleh model. Plot menunjukkan bahwa ada hubungan yang cukup kuat antara nilai prediksi dan aktual, meskipun ada sejumlah titik yang jauh dari garis regresi, yang mungkin menunjukkan adanya outlier atau kesalahan prediksi yang besar untuk beberapa negara.</p></li>
+<li><p>Garis biru pada plot ini menunjukkan hubungan linier antara ekspor aktual dan prediksi. Namun, karena beberapa titik menyebar sangat jauh dari garis, ini menunjukkan bahwa meskipun model cukup baik, masih ada variasi yang tidak bisa dijelaskan oleh model.</p></li>
+</ul>
+<p><strong>2. Plot Residuals vs Prediksi (Model Regresi)</strong></p>
+<ul>
+<li><p>Plot ini menunjukkan residuals (kesalahan antara ekspor yang diprediksi dan yang aktual) terhadap nilai prediksi. Residuals yang tersebar secara acak di sekitar garis horizontal (garis merah pada plot) menunjukkan bahwa model tidak memiliki pola yang jelas dan tidak ada kesalahan sistematik yang dapat diidentifikasi.</p></li>
+<li><p>Namun, ada beberapa titik yang jauh dari garis, yang menandakan outliers yang mungkin perlu perhatian lebih lanjut. Residuals yang tersebar di sekitar 0 menunjukkan bahwa model cukup baik dalam memprediksi nilai ekspor tanpa adanya pola yang menunjukkan kesalahan besar.</p></li>
+</ul>
+<p><strong>3. Bar Plot Koefisien Model Regresi</strong></p>
+<ul>
+<li><p>Bar plot ini menggambarkan koefisien dari masing-masing variabel dalam model regresi multivariat. Setiap bar mewakili koefisien dari variabel dalam model, dan panjang bar menunjukkan seberapa besar pengaruh variabel tersebut terhadap ekspor.</p></li>
+<li><p>Variabel middle_income memiliki bar yang cukup besar, yang menunjukkan bahwa status middle income memiliki pengaruh signifikan terhadap ekspor. Koefisien untuk variabel lain, seperti GDP total, gdp_growth, exchange_rate, dan population, dapat dilihat pada plot, dengan panjang bar yang menggambarkan seberapa besar kontribusi masing-masing variabel terhadap model.</p></li>
+</ul>
+<p><strong>Plot Regresi PLM</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mengambil prediksi dari model fixed effects</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>prediksi_fixed <span class="ot">&lt;-</span> <span class="fu">fitted</span>(model_fixed)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Memastikan data panel sudah bersih dari NA</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>valid_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">data.frame</span>(<span class="at">export =</span> pdata<span class="sc">$</span>export, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">prediksi =</span> prediksi_fixed, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">middle_income =</span> pdata<span class="sc">$</span>middle_income,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">gdp_growth =</span> pdata<span class="sc">$</span>gdp_growth,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">exchange_rate =</span> pdata<span class="sc">$</span>exchange_rate,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">population =</span> pdata<span class="sc">$</span>population))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Atur layout untuk 3 baris dan 2 kolom untuk 6 plot</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Ekspor vs Prediksi</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(valid_data<span class="sc">$</span>prediksi, valid_data<span class="sc">$</span>export, </span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ekspor vs Prediksi (Model Fixed Effects)"</span>, </span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Prediksi Ekspor"</span>, <span class="at">ylab =</span> <span class="st">"Ekspor Aktual"</span>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(valid_data<span class="sc">$</span>export <span class="sc">~</span> valid_data<span class="sc">$</span>prediksi), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2: Ekspor vs Middle Income</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(valid_data<span class="sc">$</span>middle_income, valid_data<span class="sc">$</span>export, </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ekspor vs Middle Income"</span>, </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Middle Income (0 = Non, 1 = Middle Income)"</span>, <span class="at">ylab =</span> <span class="st">"Ekspor"</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(valid_data<span class="sc">$</span>export <span class="sc">~</span> valid_data<span class="sc">$</span>middle_income), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 3: Ekspor vs GDP Growth</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(valid_data<span class="sc">$</span>gdp_growth, valid_data<span class="sc">$</span>export, </span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ekspor vs GDP Growth"</span>, </span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP Growth"</span>, <span class="at">ylab =</span> <span class="st">"Ekspor"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(valid_data<span class="sc">$</span>export <span class="sc">~</span> valid_data<span class="sc">$</span>gdp_growth), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 4: Ekspor vs Exchange Rate</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(valid_data<span class="sc">$</span>exchange_rate, valid_data<span class="sc">$</span>export, </span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ekspor vs Exchange Rate"</span>, </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Exchange Rate"</span>, <span class="at">ylab =</span> <span class="st">"Ekspor"</span>)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(valid_data<span class="sc">$</span>export <span class="sc">~</span> valid_data<span class="sc">$</span>exchange_rate), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 5: Ekspor vs Population</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(valid_data<span class="sc">$</span>population, valid_data<span class="sc">$</span>export, </span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ekspor vs Population"</span>, </span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Population"</span>, <span class="at">ylab =</span> <span class="st">"Ekspor"</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(valid_data<span class="sc">$</span>export <span class="sc">~</span> valid_data<span class="sc">$</span>population), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 6: Residuals vs Prediksi (Model Fixed Effects)</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>residuals_fixed <span class="ot">&lt;-</span> <span class="fu">residuals</span>(model_fixed)</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(valid_data<span class="sc">$</span>prediksi, residuals_fixed, </span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Residuals vs Prediksi (Model Fixed Effects)"</span>, </span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Prediksi Ekspor"</span>, <span class="at">ylab =</span> <span class="st">"Residuals"</span>)</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>1. Ekspor vs Prediksi (Model Fixed Effects)</strong></p>
+<ul>
+<li><p>Plot ini menunjukkan hubungan antara ekspor aktual dan ekspor yang diprediksi menggunakan model fixed effects.</p></li>
+<li><p>Titik-titik tersebar cukup merata di sepanjang sumbu prediksi, namun terlihat ada beberapa titik yang sangat jauh dari garis regresi, yang menunjukkan adanya outlier atau nilai ekstrem dalam data.</p></li>
+<li><p>Garis regresi biru yang ditambahkan menunjukkan kecenderungan secara umum bahwa semakin besar prediksi, semakin tinggi nilai ekspor aktual. Namun, ada banyak variabilitas di sekitar garis tersebut.</p></li>
+</ul>
+<p><strong>2. Ekspor vs Middle Income</strong></p>
+<ul>
+<li><p>Plot ini menggambarkan hubungan antara ekspor dan status middle income (dengan nilai 0 untuk negara non-middle income dan 1 untuk negara middle income).</p></li>
+<li><p>Tampak bahwa untuk negara middle income (1), nilai ekspor lebih tinggi dibandingkan dengan negara non-middle income (0), meskipun masih ada banyak variabilitas di antara keduanya.</p></li>
+<li><p>Ini menunjukkan bahwa middle income memiliki kecenderungan untuk melakukan ekspor lebih tinggi daripada negara non-middle income, namun tidak ada hubungan yang sepenuhnya konsisten.</p></li>
+</ul>
+<p><strong>3. Ekspor vs GDP Growth</strong></p>
+<ul>
+<li><p>Plot ini menggambarkan hubungan antara ekspor dan pertumbuhan GDP.</p></li>
+<li><p>Meskipun ada sejumlah negara dengan pertumbuhan GDP yang tinggi, tidak tampak adanya hubungan yang jelas antara pertumbuhan GDP dan nilai ekspor. Titik-titik tersebar secara acak, yang menunjukkan bahwa pertumbuhan GDP mungkin bukan faktor utama dalam memprediksi nilai ekspor.</p></li>
+<li><p>Secara umum, ini menunjukkan bahwa meskipun negara-negara dengan pertumbuhan ekonomi yang lebih tinggi mungkin memiliki ekspor yang lebih besar, tidak ada hubungan yang kuat atau langsung antara kedua variabel tersebut.</p></li>
+</ul>
+<p><strong>4. Ekspor vs Exchange Rate</strong></p>
+<ul>
+<li><p>Plot ini memperlihatkan hubungan antara ekspor dan nilai tukar (exchange rate).</p></li>
+<li><p>Sama seperti pada plot GDP growth, tidak ada hubungan yang jelas antara nilai tukar dan ekspor, meskipun terdapat beberapa negara dengan nilai tukar yang sangat tinggi.</p></li>
+<li><p>Titik-titik tersebar acak, menunjukkan bahwa nilai tukar tidak menjadi faktor yang signifikan dalam menjelaskan fluktuasi nilai ekspor berdasarkan model yang ada.</p></li>
+</ul>
+<p><strong>5. Ekspor vs Population</strong></p>
+<ul>
+<li><p>Plot ini menunjukkan hubungan antara populasi dan ekspor.</p></li>
+<li><p>Tampak adanya hubungan yang lebih jelas antara populasi besar dan nilai ekspor yang lebih besar, yang dapat diartikan bahwa negara dengan populasi lebih besar cenderung memiliki ekspor lebih besar, mungkin karena pasar domestik yang lebih besar atau kapasitas produksi yang lebih tinggi.</p></li>
+<li><p>Namun, meskipun hubungan ini lebih jelas, masih ada variabilitas yang cukup besar pada setiap tingkat populasi.</p></li>
+</ul>
+<p><strong>6. Residuals vs Prediksi (Model Fixed Effects)</strong></p>
+<ul>
+<li><p>Plot ini memvisualisasikan distribusi residuals terhadap prediksi untuk model fixed effects.</p></li>
+<li><p>Idealnya, residuals harus tersebar secara acak di sekitar garis horizontal (0), yang menunjukkan bahwa model tidak menghasilkan sistematis bias.</p></li>
+<li><p>Dalam plot ini, meskipun ada beberapa pola, tampaknya residuals cukup tersebar secara acak di sekitar 0, meskipun ada beberapa nilai ekstrem yang menandakan adanya outlier atau data yang tidak sepenuhnya cocok dengan model.</p></li>
+<li><p>Ini memberikan indikasi bahwa model fixed effects cukup baik dalam memprediksi ekspor, meskipun ada beberapa ketidaksesuaian.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="kesimpulan" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="kesimpulan"><span class="header-section-number">4</span> Kesimpulan</h2>
+<p>Berdasarkan hasil analisis regresi yang dilakukan, dapat disimpulkan bahwa faktor-faktor ekonomi yang mempengaruhi nilai ekspor di negara-negara ASEAN memiliki hubungan yang kompleks. Berikut adalah jawaban atas rumusan masalah penelitian:</p>
+<ol type="1">
+<li><p><strong>Pengaruh Status Middle Income terhadap Nilai Ekspor di Negara-negara ASEAN:</strong></p>
+<ul>
+<li>Hasil regresi menunjukkan bahwa status middle income memiliki pengaruh yang signifikan terhadap nilai ekspor. Negara-negara dengan status middle income (nilai 1) cenderung memiliki nilai ekspor yang lebih tinggi dibandingkan dengan negara yang bukan middle income (nilai 0). Hal ini tercermin dalam koefisien positif pada middle_income, yang menunjukkan bahwa status middle income berhubungan dengan peningkatan ekspor.</li>
+</ul></li>
+<li><p><strong>Faktor-faktor Ekonomi yang Signifikan Mempengaruhi Ekspor di Negara-negara ASEAN:</strong></p>
+<ul>
+<li><p><strong>GDP Total</strong>: Variabel GDP Total memiliki pengaruh yang sangat signifikan terhadap ekspor di negara-negara ASEAN, seperti yang ditunjukkan oleh koefisiennya yang besar dan p-value yang sangat kecil. Negara dengan GDP lebih besar umumnya memiliki ekspor yang lebih tinggi.</p></li>
+<li><p><strong>Pertumbuhan GDP</strong>: Variabel ini tidak menunjukkan pengaruh signifikan terhadap ekspor. Hasil regresi menunjukkan bahwa pertumbuhan ekonomi tidak berhubungan kuat dengan fluktuasi nilai ekspor, yang mungkin disebabkan oleh faktor lain yang lebih dominan dalam mempengaruhi ekspor.</p></li>
+<li><p><strong>Nilai Tukar (Exchange Rate)</strong>: Hasil regresi juga menunjukkan bahwa nilai tukar tidak memiliki hubungan signifikan dengan nilai ekspor. Meskipun nilai tukar bisa mempengaruhi biaya ekspor, dalam model ini tidak terdeteksi sebagai faktor penting dalam menjelaskan variasi ekspor.</p></li>
+<li><p><strong>Populasi</strong>: Variabel populasi memiliki pengaruh negatif yang signifikan terhadap ekspor. Ini mungkin terkait dengan struktur ekonomi negara-negara dengan populasi lebih besar, di mana ketergantungan pada pasar domestik bisa lebih tinggi, yang menyebabkan ekspor lebih rendah.</p></li>
+</ul></li>
+<li><p><strong>Perbedaan Kontribusi Variabel Ekonomi pada Nilai Ekspor antar Negara ASEAN:</strong></p>
+<ul>
+<li>Perbedaan kontribusi variabel ekonomi pada nilai ekspor antarnegara ASEAN terlihat dari koefisien yang bervariasi, meskipun GDP Total memiliki pengaruh paling konsisten dan signifikan di seluruh negara. Variabel lain, seperti pertumbuhan GDP dan nilai tukar, tidak memberikan kontribusi signifikan pada beberapa negara, mengindikasikan bahwa negara-negara ASEAN memiliki faktor-faktor yang lebih lokal atau khusus yang mempengaruhi nilai ekspor.</li>
+</ul></li>
+<li><p><strong>Efek Khusus Negara (Fixed Effects) yang Mempengaruhi Hubungan Faktor Ekonomi dan Nilai Ekspor:</strong></p>
+<ul>
+<li>Model Fixed Effects menunjukkan adanya variabilitas antarnegara yang signifikan dalam pengaruh faktor-faktor ekonomi terhadap ekspor. Negara-negara ASEAN memiliki karakteristik spesifik, seperti struktur ekonomi dan kebijakan perdagangan yang dapat memengaruhi hubungan antara variabel ekonomi dan nilai ekspor. Model ini berhasil mengontrol efek khusus negara yang mungkin tidak tercapture oleh model regresi multivariat standar.</li>
+</ul></li>
+<li><p><strong>Performa Model Regresi Multivariat dan Fixed Effects:</strong></p>
+<ul>
+<li><p>Model regresi multivariat memberikan pemahaman yang cukup baik tentang faktor-faktor ekonomi yang mempengaruhi ekspor secara keseluruhan. Meskipun beberapa variabel seperti pertumbuhan GDP dan nilai tukar tidak signifikan, model ini memberikan gambaran umum yang jelas tentang pengaruh GDP Total dan middle income terhadap ekspor.</p></li>
+<li><p>Model Fixed Effects lebih efektif dalam menangani variabilitas antarnegara dan dapat mengontrol efek negara yang mungkin tidak terekam dalam model multivariat biasa. Meskipun beberapa variabel tidak signifikan, model ini menunjukkan bahwa perbedaan antarnegara ASEAN memainkan peran penting dalam memengaruhi ekspor.</p></li>
+</ul></li>
+<li><p><strong>Kesimpulan Umum</strong></p>
+<ul>
+<li><p>Status middle income dan GDP Total terbukti sebagai faktor yang paling signifikan dalam menjelaskan variasi ekspor di negara-negara ASEAN.</p></li>
+<li><p>Meskipun beberapa variabel seperti pertumbuhan GDP dan nilai tukar tidak menunjukkan pengaruh yang signifikan dalam model ini, populasi dan status middle income tetap berkontribusi dalam menjelaskan perbedaan ekspor.</p></li>
+<li><p>Model fixed effects memperlihatkan perbedaan yang signifikan antarnegara ASEAN, menunjukkan pentingnya pengaruh efek khusus negara dalam analisis ekspor.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="penutup" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="penutup"><span class="header-section-number">5</span> Penutup</h2>
+<p>Kesimpulan yang diperoleh dalam penelitian ini sejalan dengan teori <em>Heckscher-Ohlin</em> dalam perdagangan internasional, yang menyatakan bahwa pola ekspor suatu negara sangat dipengaruhi oleh keunggulan komparatif berdasarkan faktor produksi yang melimpah di negara tersebut. Negara dengan status middle income cenderung memiliki akses lebih baik terhadap modal, infrastruktur, dan teknologi, yang memungkinkan mereka untuk menghasilkan barang dengan nilai tambah lebih tinggi yang kompetitif di pasar internasional.</p>
+<p>Selain itu, teori <em>Gravity Model of Trade</em> juga mendukung temuan ini, dengan menekankan bahwa ukuran ekonomi (diukur melalui GDP) merupakan faktor utama dalam mendorong perdagangan antarnegara. Dengan GDP yang lebih besar, negara-negara memiliki kapasitas produksi dan daya saing ekspor yang lebih kuat. Temuan ini memperkuat bahwa faktor-faktor makroekonomi, seperti GDP Total dan status middle income, adalah determinan utama dalam menjelaskan variasi ekspor di negara-negara ASEAN, sebagaimana tercermin dalam hasil regresi dan model efek tetap yang digunakan.</p>
+</section>
+<section id="referensi" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="referensi"><span class="header-section-number">6</span> Referensi</h2>
+<p>Aripin, R. R. (2017). Model Regresi Multivariat untuk Menentukan Faktor-Faktor yang Mempengaruhi Kesejahteraan Kabupaten dan Kota di Jawa Tengah. Skripsi. Institut Teknologi Sepuluh Nopember Surabaya. Diakses dari <a href="https://repository.its.ac.id" class="uri">https://repository.its.ac.id</a>.</p>
+<p>ASEAN Statistics Division. (2020). <em>Statistical Indicators on ASEAN Economic Cooperation</em>. Jakarta: ASEAN Secretariat.</p>
+<p>Basuki, A. T., &amp; Prawoto, N. (2016). Analisis Regresi dalam Penelitian Ekonomi &amp; Bisnis: Dilengkapi Aplikasi SPSS &amp; Eviews. Yogyakarta: Penerbit BPFE-Yogyakarta.</p>
+<p>Ghozali, I., &amp; Ratmono, D. (2017). Analisis Multivariat dan Ekonometrika: Teori, Konsep, dan Aplikasi dengan Eviews 10 (Edisi 2). Semarang: Badan Penerbit Universitas Diponegoro.</p>
+<p>Kuncoro, M. (2016). Ekonomi Pembangunan: Teori, Masalah, dan Kebijakan. Jakarta: Erlangga.</p>
+<p>Rahmawati, L. (2022). Analisis Faktor-Faktor yang Mempengaruhi Volume Ekspor Kopi Indonesia ke Lima Negara Tujuan Utama. Skripsi. Universitas Islam Negeri Syarif Hidayatullah Jakarta. Diakses dari https://repository.uinjkt.ac.id.</p>
+<p>Satyahadewi, N., Aprizkiyandari, S., &amp; Oprasianti, R. (2023). Regresi Data Panel dalam Analisis Faktor-Faktor yang Mempengaruhi IPM di Kalimantan Barat. Jurnal Statistika, Universitas Islam Bandung. Diakses dari https://journals.unisba.ac.id.</p>
+<p>Tarmizi, M. M. (2020). Ekonometrika: Model &amp; Aplikasi. Jakarta: Penerbit Eureka.</p>
+<p>World Bank. (2020). <em>World Development Indicators 2020</em>. Washington, D.C.: World Bank.</p>
+</section>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

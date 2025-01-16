@@ -1,0 +1,1165 @@
+---
+title: "Analisis Regresi Multivariat, dan Fixed Effects terhadap Faktor-Faktor yang Mempengaruhi Ekspor di Negara ASEAN"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Raudya Prameswari"
+date: 2025-01-17
+number-sections: true
+format:
+  html: default
+  html-math-method: default
+  docx: default
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+![](poltekapp.jpg){fig-align="center" width="50%"}
+
+::: {style="text-align: justify"}
+## Pendahuluan
+
+### Latar belakang
+
+Negara-negara di kawasan ASEAN memiliki peran strategis dalam
+perekonomian global sebagai salah satu kawasan dengan pertumbuhan
+ekonomi tercepat. Sebagai blok perdagangan, ASEAN memiliki keunggulan
+kompetitif dalam berbagai sektor seperti manufaktur, pertanian, dan
+jasa. Namun, performa ekspor antarnegara ASEAN menunjukkan variasi yang
+signifikan, dipengaruhi oleh faktor-faktor ekonomi seperti total Produk
+Domestik Bruto (GDP), pertumbuhan ekonomi, nilai tukar, dan populasi.
+Dalam era globalisasi, pemahaman mendalam tentang faktor-faktor yang
+mendorong ekspor menjadi sangat penting bagi pengambil kebijakan untuk
+meningkatkan daya saing internasional.
+
+Penelitian ini menggunakan pendekatan regresi sederhana, multivariat,
+dan fixed effects untuk menganalisis pengaruh variabel-variabel ekonomi
+terhadap ekspor di negara-negara ASEAN. Regresi sederhana digunakan
+untuk memahami hubungan langsung antara status middle income dan ekspor.
+Regresi multivariat digunakan untuk mengevaluasi pengaruh faktor-faktor
+tambahan seperti pertumbuhan GDP, nilai tukar, dan populasi. Sementara
+itu, model fixed effects diterapkan untuk menangkap efek khusus tiap
+negara yang tidak terukur secara langsung. Dengan pendekatan ini,
+penelitian bertujuan untuk memberikan gambaran yang komprehensif
+mengenai determinan ekspor di ASEAN dan implikasinya terhadap kebijakan
+ekonomi.
+
+### Ruang lingkup
+
+**Ruang Lingkup Penelitian**
+
+Penelitian ini difokuskan pada analisis faktor-faktor ekonomi yang
+memengaruhi ekspor di negara-negara ASEAN. Adapun ruang lingkup
+penelitian ini meliputi:
+
+1.  **Kawasan dan Subjek Penelitian**:
+
+    -   Kawasan yang dianalisis adalah negara-negara anggota ASEAN,
+        meliputi Indonesia, Malaysia, Filipina, Singapura, Thailand,
+        Vietnam, Brunei Darussalam, Kamboja, dan Timor Leste.
+
+    -   Subjek penelitian mencakup data ekonomi makro negara-negara
+        tersebut, khususnya yang berkaitan dengan ekspor.
+
+2.  **Periode Waktu**:
+
+    -   Penelitian ini menggunakan data tahunan dari tahun 2000 hingga
+        2020 untuk menangkap dinamika jangka panjang dalam performa
+        ekspor.
+
+3.  **Variabel Penelitian**:
+
+    -   **Variabel Dependen**: Nilai ekspor (dalam US\$).
+
+    -   **Variabel Independen**: GDP Total, pertumbuhan GDP, nilai
+        tukar, dan populasi.
+
+    -   **Variabel Dummy**: Status middle income berdasarkan threshold
+        GDP Total.
+
+4.  **Sumber Data**:
+
+    -   Data yang digunakan berasal dari World Bank melalui paket `WDI`
+        di R Studio, mencakup indikator ekonomi seperti nilai ekspor,
+        GDP Total, pertumbuhan GDP, nilai tukar, dan populasi.
+
+### Rumusan masalah
+
+Berdasarkan analisis regresi yang akan dilakukan,rumusan masalah
+penelitian adalah sebagai berikut:
+
+1.  Bagaimana pengaruh status middle income terhadap nilai ekspor di
+    negara-negara ASEAN?
+
+2.  Faktor-faktor ekonomi apa saja, seperti GDP Total, pertumbuhan GDP,
+    nilai tukar, dan populasi, yang secara signifikan memengaruhi ekspor
+    di negara-negara ASEAN?
+
+3.  Sejauh mana variabel ekonomi memberikan kontribusi yang berbeda pada
+    nilai ekspor antarnegara di kawasan ASEAN?
+
+4.  Apakah terdapat efek khusus yang unik di setiap negara ASEAN yang
+    memengaruhi hubungan antara faktor ekonomi dan nilai ekspor?
+
+5.  Bagaimana performa model regresi multivariat, dan fixed effects
+    dalam menganalisis determinan ekspor di ASEAN?
+
+### Tujuan dan manfaat penelitian
+
+Berdasarkan latar belakang penelitian, kawasan ASEAN memiliki peran
+penting dalam perekonomian global dengan kontribusi ekspor yang
+signifikan. Namun, variasi kinerja ekspor antarnegara ASEAN menunjukkan
+adanya pengaruh dari berbagai faktor ekonomi, seperti GDP Total,
+pertumbuhan GDP, nilai tukar, dan populasi. Untuk memahami hubungan ini
+secara mendalam, penelitian ini bertujuan menganalisis pengaruh
+faktor-faktor tersebut terhadap ekspor di negara-negara ASEAN dengan
+pendekatan regresi sederhana, multivariat, dan fixed effects.
+
+Diharapkan, hasil penelitian ini tidak hanya memberikan kontribusi
+teoretis bagi literatur ekonomi internasional, tetapi juga memberikan
+rekomendasi praktis bagi pembuat kebijakan dan pelaku usaha dalam
+meningkatkan daya saing ekspor negara-negara ASEAN.
+
+Manfaat lain:
+
+-   Memberikan kontribusi pada pengembangan literatur ekonomi
+    internasional, khususnya terkait hubungan antara faktor-faktor
+    ekonomi makro dan ekspor di kawasan ASEAN.
+
+-   Menunjukkan efektivitas pendekatan regresi multivariat, dan fixed
+    effects dalam menganalisis data lintas negara dan waktu (panel
+    data).
+
+-   Memberikan rekomendasi kebijakan untuk meningkatkan ekspor di
+    negara-negara ASEAN berdasarkan determinan ekonomi yang signifikan.
+
+-   Memberikan gambaran tentang pengaruh variabel ekonomi tertentu
+    terhadap potensi ekspor, sehingga pelaku usaha dapat merancang
+    strategi bisnis yang lebih baik.
+
+### Package
+
+Packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(WDI)       # Mengambil data World Bank
+library(dplyr)     # Manipulasi data
+library(ggplot2)   # Visualisasi data
+library(plm)       # Analisis data panel
+library(kableExtra)# Pembuatan tabel
+library(gridExtra) # Banyak Plot Sekaligus
+library(corrplot)  # Plot Correlation Matrix
+
+```
+
+## Studi pustaka
+
+**Ekspor dan Faktor Ekonomi Makro**
+
+Ekspor merupakan salah satu pendorong utama pertumbuhan ekonomi,
+terutama di kawasan ASEAN yang memiliki peran strategis dalam
+perdagangan global. Penelitian sebelumnya menunjukkan bahwa GDP, nilai
+tukar, dan populasi secara signifikan memengaruhi performa ekspor suatu
+negara. Penelitian oleh Wardatul Luthfiyana (2020) menemukan bahwa
+Foreign Direct Investment (FDI), inflasi, GDP, dan nilai tukar
+memberikan pengaruh signifikan terhadap kinerja ekspor di ASEAN 5, yaitu
+Indonesia, Malaysia, Singapura, Thailand, dan Filipina. Temuan ini
+konsisten dengan studi oleh Anita Yulistina (2018), yang menunjukkan
+bahwa GDP berkontribusi besar terhadap kinerja ekspor Indonesia dalam
+hubungan dagang dengan negara-negara ASEAN dan mitra dagang utama
+lainnya.
+
+**Peran GDP dalam Perdagangan Internasional**
+
+GDP merupakan indikator utama dalam menganalisis kekuatan ekonomi sebuah
+negara. Penelitian Budi Santoso (2017) menemukan bahwa GDP Total
+berpengaruh positif terhadap ekspor di ASEAN. Studi ini juga menyoroti
+perbedaan efek variabel ekonomi makro terhadap negara dengan status
+middle income dibandingkan negara berpenghasilan tinggi. Penelitian lain
+oleh Ibrahim dkk. (2020) menggunakan pendekatan model gravitasi dan
+membuktikan bahwa GDP, ukuran populasi, dan jarak ekonomi merupakan
+determinan utama dalam perdagangan internasional.
+
+**Nilai Tukar dan Ekspor**
+
+Nilai tukar memainkan peran penting dalam menentukan daya saing harga
+barang di pasar internasional. Penelitian oleh Rizki Permana (2018)
+menunjukkan bahwa perubahan nilai tukar memiliki dampak signifikan
+terhadap ekspor negara-negara ASEAN dalam jangka pendek, meskipun
+dampaknya berbeda di setiap negara. Studi ini menegaskan pentingnya
+stabilitas nilai tukar untuk meningkatkan daya saing ekspor.
+
+**Metode Analisis: Regresi dan Fixed Effects**
+
+Penggunaan pendekatan regresi sederhana, multivariat, dan fixed effects
+menjadi populer dalam penelitian perdagangan internasional. Studi oleh
+Febriani dkk. (2021) memanfaatkan data panel dinamis untuk menganalisis
+determinan ekspor di negara-negara ASEAN, yang mencakup variabel
+makroekonomi seperti GDP Total, pertumbuhan GDP, nilai tukar, dan
+populasi. Penelitian ini menekankan pentingnya pendekatan fixed effects
+untuk menangkap karakteristik khusus tiap negara, sehingga menghasilkan
+analisis yang lebih akurat.
+
+**Konteks ASEAN dalam Perdagangan**
+
+ASEAN sebagai blok perdagangan telah memperkuat integrasi ekonominya
+melalui kerja sama regional, seperti ASEAN Free Trade Area (AFTA). Studi
+oleh Wijaya dkk. (2022) menunjukkan bahwa status keanggotaan ASEAN
+memberikan pengaruh positif terhadap peningkatan ekspor negara-negara
+anggota dibandingkan non-anggota. Penelitian ini menyoroti pentingnya
+perjanjian perdagangan regional dalam meningkatkan perdagangan lintas
+batas.
+
+## Metode penelitian
+
+### Data
+
+Data yang digunakan dalam penelitian berikut berasal dari World Bank
+mencakup indikator ekonomi seperti nilai ekspor, GDP Total, pertumbuhan
+GDP, nilai tukar, dan populasi.
+
+```{r}
+
+# ============================================
+# 2. Download Data World Bank (WDI)
+# ============================================
+# Unduh data untuk negara ASEAN dengan variabel GDP Total
+data <- WDI(country = c("ID", "MY", "PH", "SG", "TH", "VN", "BN", "KH", "TL"), 
+            indicator = c("NE.EXP.GNFS.CD",    # Export (current US$)
+                          "NY.GDP.MKTP.CD",   # GDP Total (current US$)
+                          "NY.GDP.MKTP.KD.ZG",# GDP growth (annual %)
+                          "PA.NUS.FCRF",      # Exchange rate
+                          "SP.POP.TOTL"),     # Population
+            start = 2000, 
+            end = 2020)
+
+
+# Ubah nama kolom agar lebih deskriptif
+colnames(data) <- c( "country","iso2c", "iso3c", "year", "export", "gdp_total", 
+                    "gdp_growth", "exchange_rate", "population")
+
+# ============================================
+# 3. Membersihkan Data
+# ============================================
+# Hapus nilai kosong di kolom penting
+data_clean <- data %>%
+  filter(!is.na(gdp_total) & !is.na(export) & 
+           !is.na(gdp_growth) & !is.na(exchange_rate) & 
+           !is.na(population))
+
+# ============================================
+# 4. Tambahkan Variabel Dummy
+# ============================================
+# Tambahkan dummy untuk middle income berdasarkan GDP Total
+data_clean <- data_clean %>%
+  mutate(middle_income = ifelse(gdp_total >= 1e10 & gdp_total <= 5e12, 1, 0))
+
+# ============================================
+# 5. Eksplorasi Data
+# ============================================
+# Statistik Deskriptif
+summary(data_clean)
+
+# Distribusi middle income di negara ASEAN
+table(data_clean$middle_income)
+
+# Cetak tabel dengan kable
+data_clean %>%
+  kable("html", caption = "Data Clean") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive", "bordered"))
+
+
+```
+
+Sumber data: World Bank.
+
+![Logo World Bank](WorldBank.jpg){fig-alt="Logo World Bank."
+fig-align="center" width="30%"}
+
+Tabel data yang digunakan dalam penelitian ini mencakup data tahunan
+dari negara-negara ASEAN untuk periode 2000 hingga 2020. Data diambil
+dari World Bank melalui library WDI di R, mencakup indikator ekonomi
+makro yang relevan. Berikut adalah penjelasan setiap variabel yang
+terdapat dalam tabel:
+
+-   iso3c: Kode ISO 3 huruf untuk setiap negara (contoh: IDN untuk
+    Indonesia, MYS untuk Malaysia). Variabel ini digunakan sebagai
+    identitas unik tiap negara dalam analisis data panel.
+
+-   year: Tahun observasi, mencakup rentang dari 2000 hingga 2020.
+    Variabel ini berfungsi untuk menganalisis tren data secara waktu.
+
+-   export: Nilai ekspor dalam US Dollar (USD). Variabel ini merupakan
+    variabel dependen dalam model regresi, yang dianalisis pengaruhnya
+    terhadap variabel independen lainnya.
+
+-   gdp_total: Produk Domestik Bruto (GDP) Total dalam USD. Variabel ini
+    mencerminkan kekuatan ekonomi suatu negara dan digunakan sebagai
+    salah satu variabel independen.
+
+-   gdp_growth: Pertumbuhan GDP tahunan dalam persen (%). Variabel ini
+    digunakan untuk menangkap dinamika ekonomi setiap negara dari waktu
+    ke waktu.
+
+-   exchange_rate: Nilai tukar mata uang domestik terhadap USD. Variabel
+    ini memengaruhi daya saing harga barang ekspor di pasar
+    internasional.
+
+-   population: Jumlah populasi total dari setiap negara. Variabel ini
+    digunakan untuk mencerminkan kapasitas pasar domestik dan tenaga
+    kerja.
+
+-   middle_income: Variabel dummy yang menunjukkan status pendapatan
+    menengah suatu negara, dengan nilai:
+
+    -   0: Negara dengan pendapatan di luar kategori middle income. bisa
+        dibawah income menengah maupun diatas menengah.
+
+    -   1: Negara dengan pendapatan dalam kategori middle income,
+        berdasarkan threshold GDP Total tertentu.
+
+### Plot (Visualisasi Data)
+
+```{r}
+#| label: fig-1
+#| fig-cap: "Plot Sebaran Middle Income"
+# Histogram distribusi ekspor berdasarkan status middle income
+ggplot(data_clean, aes(x = export, fill = factor(middle_income))) +
+  geom_histogram(binwidth = 1000000000, alpha = 0.7, position = "identity") +
+  labs(title = "Sebaran Ekspor Berdasarkan Status Middle Income",
+       x = "Ekspor (US$)", y = "Frekuensi",
+       fill = "Middle Income Status") +
+  theme_minimal()
+
+```
+
+Dari histogram yang ditampilkan, dapat dilihat distribusi ekspor
+berdasarkan status middle income (0 = Non-middle income, 1 = Middle
+income). Berikut adalah interpretasi singkatnya:
+
+-   **Non-middle income (status 0):**
+
+-   Sebagian besar negara dalam kategori ini memiliki nilai ekspor yang
+    sangat rendah, dengan beberapa nilai yang sangat kecil (dekat dengan
+    0).
+
+-   Frekuensi ekspor pada nilai rendah lebih banyak dibandingkan dengan
+    ekspor yang lebih tinggi, yang menunjukkan bahwa sebagian besar
+    negara non-middle income memiliki ekspor yang terbatas.
+
+**Middle income (status 1):**
+
+-   Negara dengan status middle income memiliki nilai ekspor yang jauh
+    lebih tinggi. Distribusi ekspor untuk negara-negara ini terlihat
+    lebih terdistribusi dan cenderung memiliki lebih banyak nilai yang
+    tersebar di rentang yang lebih tinggi.
+
+-   Meskipun ada nilai yang lebih kecil, jumlah negara middle income
+    yang memiliki ekspor tinggi lebih banyak, menunjukkan bahwa status
+    middle income cenderung berhubungan dengan ekspor yang lebih besar.
+
+```{r}
+#| label: fig-2
+#| fig-cap: "Plot Dependen vs Independen"
+
+
+# Scatter plot untuk ekspor vs GDP Total
+p1 <- ggplot(data_clean, aes(x = gdp_total, y = export, color = factor(middle_income))) +
+  geom_point() +
+  labs(title = "Ekspor vs GDP Total", x = "GDP Total (US$)", y = "Ekspor (US$)", color = "Middle Income Status") +
+  theme_minimal()
+
+# Scatter plot untuk ekspor vs GDP Growth
+p2 <- ggplot(data_clean, aes(x = gdp_growth, y = export, color = factor(middle_income))) +
+  geom_point() +
+  labs(title = "Ekspor vs Pertumbuhan GDP", x = "Pertumbuhan GDP (%)", y = "Ekspor (US$)", color = "Middle Income Status") +
+  theme_minimal()
+
+# Scatter plot untuk ekspor vs Exchange Rate
+p3 <- ggplot(data_clean, aes(x = exchange_rate, y = export, color = factor(middle_income))) +
+  geom_point() +
+  labs(title = "Ekspor vs Nilai Tukar", x = "Nilai Tukar", y = "Ekspor (US$)", color = "Middle Income Status") +
+  theme_minimal()
+
+# Scatter plot untuk ekspor vs Population
+p4 <- ggplot(data_clean, aes(x = population, y = export, color = factor(middle_income))) +
+  geom_point() +
+  labs(title = "Ekspor vs Populasi", x = "Populasi", y = "Ekspor (US$)", color = "Middle Income Status") +
+  theme_minimal()
+
+grid.arrange(p1,p2,p3,p4, ncol = 2)
+
+
+```
+
+Dari scatter plot yang ditampilkan, berikut adalah interpretasi
+masing-masing plot:
+
+**1. Ekspor vs GDP Total**
+
+-   Status Middle Income (1): Negara dengan status middle income
+    (ditandai dengan warna biru) menunjukkan hubungan positif yang jelas
+    antara GDP Total dan Ekspor. Semakin tinggi GDP Total suatu negara,
+    semakin besar ekspor yang tercatat, dengan banyak negara middle
+    income yang memiliki ekspor yang sangat tinggi.
+
+-   Status Non-Middle Income (0): Negara non-middle income (ditandai
+    dengan warna merah) cenderung memiliki GDP Total yang rendah dan
+    ekspor yang lebih kecil, dengan beberapa pengecualian.
+
+**2. Ekspor vs Pertumbuhan GDP**
+
+-   **Status Middle Income (1):** Negara-negara middle income
+    menunjukkan variasi ekspor yang lebih luas dengan pertumbuhan GDP
+    yang lebih tinggi. Meskipun ada beberapa negara dengan pertumbuhan
+    GDP tinggi, ekspor mereka tidak selalu sebanding, menunjukkan bahwa
+    faktor-faktor lain (seperti kebijakan ekonomi atau pasar) mungkin
+    memengaruhi ekspor.
+
+-   **Status Non-Middle Income (0):** Negara dengan status non-middle
+    income memiliki variasi ekspor yang lebih terbatas meskipun ada
+    beberapa negara yang menunjukkan ekspor tinggi dengan pertumbuhan
+    GDP yang relatif rendah.
+
+**3. Ekspor vs Nilai Tukar**
+
+-   **Status Middle Income (1):** Negara dengan status middle income
+    terlihat memiliki variasi ekspor yang lebih besar, meskipun hubungan
+    antara nilai tukar dan ekspor tampaknya tidak terlalu jelas. Hal ini
+    menunjukkan bahwa perubahan nilai tukar mungkin tidak selalu secara
+    langsung mempengaruhi ekspor pada negara middle income.
+
+-   **Status Non-Middle Income (0):** Negara non-middle income lebih
+    banyak yang memiliki nilai tukar rendah dan nilai ekspor sangat
+    terbatas, dengan hanya sedikit negara yang menunjukkan ekspor
+    signifikan meskipun memiliki nilai tukar rendah.
+
+**4. Ekspor vs Populasi**
+
+-   **Status Middle Income (1):** Negara dengan status middle income
+    menunjukkan variasi ekspor yang lebih besar dengan populasi yang
+    lebih tinggi. Hal ini mengindikasikan bahwa negara dengan populasi
+    besar mungkin memiliki kapasitas ekonomi yang lebih besar, yang
+    mendukung volume ekspor yang lebih tinggi.
+
+-   **Status Non-Middle Income (0):** Negara non-middle income yang
+    memiliki populasi besar cenderung memiliki ekspor yang lebih kecil,
+    yang mungkin disebabkan oleh keterbatasan sumber daya ekonomi dan
+    infrastruktur.
+
+```{r}
+#| label: fig-3
+#| fig-cap: "Plot Korelasi Heatmap"
+# Plot Korelasi Antar Variabel
+
+
+# Menghitung korelasi antar variabel
+cor_matrix <- cor(data_clean[, c("export", "gdp_total", "gdp_growth", "exchange_rate", "population")], use = "complete.obs")
+
+# Visualisasi heatmap korelasi
+corrplot(cor_matrix, method = "color", 
+         title = "Korelasi Antara Variabel untuk Regresi Multivariat", 
+         addCoef.col = "black", number.cex = 0.7)
+```
+
+Berdasarkan plot korelasi diatas, dapat di-interpretasikan sebagai
+berikut
+
+-   **Ekspor vs GDP Total**:
+
+    -   **Korelasi positif (0.51)**: Terdapat korelasi positif sedang
+        antara ekspor dan GDP Total. Artinya, semakin tinggi GDP Total
+        suatu negara, semakin besar nilai ekspor yang dihasilkan. Ini
+        menunjukkan bahwa negara dengan ekonomi yang lebih besar
+        cenderung memiliki ekspor yang lebih tinggi.
+
+-   **Ekspor vs GDP Growth**:
+
+    -   **Korelasi negatif (-0.1)**: Tidak ada korelasi yang kuat antara
+        ekspor dan pertumbuhan GDP. Nilai yang rendah dan negatif
+        menunjukkan bahwa pertumbuhan ekonomi tidak memiliki hubungan
+        signifikan dengan nilai ekspor, yang bisa berarti bahwa ekspor
+        tidak sepenuhnya dipengaruhi oleh pertumbuhan ekonomi.
+
+-   **Ekspor vs Nilai Tukar**:
+
+    -   **Korelasi negatif (-0.03)**: Ekspor dan nilai tukar memiliki
+        korelasi yang sangat lemah dan negatif, menunjukkan bahwa
+        perubahan nilai tukar hampir tidak mempengaruhi nilai ekspor
+        secara signifikan di negara-negara yang dianalisis.
+
+-   **Ekspor vs Populasi**:
+
+    -   **Korelasi positif (0.06)**: Korelasi yang sangat lemah
+        menunjukkan bahwa populasi hampir tidak mempengaruhi ekspor.
+        Meskipun ada sedikit kecenderungan positif, hubungan ini tidak
+        cukup signifikan.
+
+-   **GDP Total vs GDP Growth**:
+
+    -   **Korelasi negatif (-0.1)**: Terdapat korelasi yang sangat lemah
+        dan negatif antara GDP Total dan pertumbuhan GDP. Hal ini
+        menunjukkan bahwa meskipun GDP Total lebih tinggi, pertumbuhan
+        GDP tidak selalu sejalan dengan ukuran ekonomi yang lebih besar.
+
+-   **GDP Total vs Nilai Tukar**:
+
+    -   **Korelasi positif (0.29)**: Terdapat korelasi positif lemah
+        antara GDP Total dan nilai tukar. Hal ini bisa menunjukkan bahwa
+        negara dengan GDP yang lebih besar mungkin memiliki nilai tukar
+        yang lebih stabil atau lebih kuat, meskipun hubungan ini cukup
+        lemah.
+
+-   **GDP Total vs Populasi**:
+
+    -   **Korelasi positif sangat kuat (0.76)**: Ini menunjukkan
+        korelasi yang sangat kuat antara GDP Total dan populasi. Negara
+        dengan populasi besar cenderung memiliki ekonomi yang lebih
+        besar, yang dapat mengindikasikan bahwa jumlah penduduk berperan
+        besar dalam produksi ekonomi.
+
+-   **GDP Growth vs Nilai Tukar**:
+
+    -   **Korelasi positif lemah (0.09)**: Korelasi antara pertumbuhan
+        GDP dan nilai tukar sangat lemah dan positif, yang berarti bahwa
+        perubahan pertumbuhan ekonomi tidak berpengaruh banyak pada
+        fluktuasi nilai tukar.
+
+-   **GDP Growth vs Populasi**:
+
+    -   **Korelasi positif sangat lemah (0.02)**: Pertumbuhan GDP
+        memiliki korelasi yang sangat lemah dengan populasi, menunjukkan
+        bahwa jumlah penduduk hampir tidak mempengaruhi pertumbuhan
+        ekonomi dalam hal ekspor atau GDP.
+
+-   **Nilai Tukar vs Populasi**:
+
+    -   **Korelasi positif moderat (0.55)**: Terdapat korelasi positif
+        sedang antara nilai tukar dan populasi, yang dapat menunjukkan
+        bahwa negara dengan populasi yang lebih besar mungkin memiliki
+        pasar yang lebih besar dan, akibatnya, nilai tukar yang lebih
+        kuat.
+
+GDP Total adalah faktor utama yang berhubungan dengan ekspor dan
+populasi, menunjukkan bahwa negara dengan GDP lebih besar cenderung
+memiliki kinerja ekspor yang lebih baik. Pertumbuhan GDP dan nilai tukar
+tampaknya tidak memiliki hubungan yang signifikan dengan ekspor, yang
+menunjukkan bahwa faktor lain mungkin lebih penting dalam menentukan
+volume ekspor. Populasi memiliki korelasi kuat dengan GDP Total,
+menunjukkan bahwa negara dengan populasi besar umumnya memiliki ekonomi
+yang lebih besar.
+
+### Metode analisis
+
+Metode yang dipilih dalam penelitian ini adalah Regresi Multivariat,
+Regresi Dummy dan Fixed Effects yang dilakukan dengan menganalisis
+hubungan antara faktor-faktor ekonomi suatu negara (seperti GDP Total,
+pertumbuhan GDP, nilai tukar, dan populasi) terhadap nilai ekspor
+negara-negara ASEAN. Spesifikasi yang dilakukan adalah:
+
+*Model Regresi Multivariat & Dummy*
+
+$$ 
+\text{Ekspor}\_i = \beta\_0 + \beta\_1 \cdot \text{GDP Total}\_i +
+\beta\_2 \cdot \text{Pertumbuhan GDP}\_i + \beta\_3
+\cdot \text{Nilai Tukar}\_i + \beta\_4 \cdot \text{Populasi}\_i +
+\beta\_5 \cdot \text{Middle Income}\_i + \epsilon\_i
+$$
+
+Di mana:
+
+-   $\text{Ekspor}_i$ : Ekspor negara $i$.
+
+-   $\text{GDP Total}_i$ : GDP total negara $i$.
+
+-   $\text{Pertumbuhan GDP}_i$ : Pertumbuhan GDP negara $i$.
+
+-   $\text{Nilai Tukar}_i$ : Nilai tukar negara $i$.
+
+-   $\text{Populasi}_i$ : Populasi negara $i$.
+
+-   $\text{Middle Income}_i$ : Variabel dummy yang bernilai 1 jika
+    negara $i$ termasuk dalam kategori middle income, dan 0 jika negara
+    tersebut tidak (non-middle income).
+
+-   $\beta_0$ : Intercept (konstanta).
+
+-   $\beta_1, \beta_2, \beta_3, \beta_4, \beta_5$ : Koefisien regresi
+    yang menunjukkan pengaruh setiap variabel independen terhadap ekspor
+
+-   $\epsilon_{ij}$ : Error term
+
+*Model Fixed Effects*
+
+$$
+\text{Ekspor}_{it} = \alpha_i + \beta_1 \cdot \text{GDP Total}_{it} + \beta_2 \cdot \text{Pertumbuhan GDP}_{it} + \beta_3 \cdot \text{Nilai Tukar}_{it} + \beta_4 \cdot \text{Populasi}_{it} + \epsilon_{it}
+$$ Di mana:
+
+-   $\text{Ekspor}_{it}$ : Ekspor negara $i$ pada waktu $t$.
+
+-   $\alpha_i$ : Efek tetap (fixed effect) untuk setiap negara, yang
+    mengontrol perbedaan yang tidak teramati antar negara (misalnya
+    kebijakan ekonomi atau faktor struktural).
+
+-   $\epsilon_{it}$ : Error term untuk negara $i$ pada waktu $t$.
+
+### Analisis Masalah
+
+#### Regresi
+
+##### Regresi Multivariat
+
+```{r}
+# Model 2: Regresi multivariat dengan variabel kontrol
+model1 <- lm(export ~ middle_income + gdp_total + gdp_growth + exchange_rate + population, data = data_clean)
+summary(model1)
+```
+
+interpretasi untuk setiap variabel dalam model regresi multivariat yang
+diberikan:
+
+**1. Intercept (**$\beta_0$)
+
+-   **Koefisien**: $−5.444×10^9$
+
+-   **P-value**: $0.783$ (tidak signifikan)
+
+-   **Interpretasi**: Intercept pada model ini tidak signifikan, artinya
+    ketika semua variabel independen (middle income, GDP Total, GDP
+    Growth, nilai tukar, dan populasi) bernilai 0, nilai ekspor tidak
+    dapat diprediksi dengan tepat menggunakan model ini. Karena nilai p
+    lebih besar dari 0.05, kita tidak bisa menarik kesimpulan dari
+    intercept ini.
+
+**2. Middle Income (Variabel Dummy)**
+
+-   **Koefisien**: $1.159×10^{11}$
+
+-   **P-value**: $1.4×10^{−7}$(signifikan)
+
+-   **Interpretasi**: Negara dengan status middle income diperkirakan
+    memiliki ekspor yang lebih besar sebesar $1.159×10^{11}$
+    dibandingkan negara non-middle income. Koefisien ini sangat
+    signifikan (p-value sangat kecil), yang menunjukkan bahwa status
+    middle income berpengaruh besar terhadap volume ekspor suatu negara.
+
+**3. GDP Total**
+
+-   **Koefisien**: 0.6845
+
+-   **P-value**: $< 2×10^{−16}$ (signifikan)
+
+-   **Interpretasi**: GDP Total memiliki pengaruh positif yang sangat
+    kuat terhadap ekspor. Setiap peningkatan 1 unit dalam GDP Total
+    diperkirakan akan meningkatkan ekspor sebesar 0.6845. Hubungan ini
+    sangat signifikan (p-value sangat kecil), yang mengindikasikan bahwa
+    semakin besar ekonomi suatu negara, semakin besar pula ekspor yang
+    dihasilkan.
+
+**4. GDP Growth**
+
+-   **Koefisien**: $1.204×10^9$
+
+-   **P-value**: 0.338 (tidak signifikan)
+
+-   **Interpretasi**: Pertumbuhan GDP tidak menunjukkan pengaruh yang
+    signifikan terhadap ekspor, dengan p-value yang lebih besar dari
+    0.05. Ini menunjukkan bahwa meskipun ekonomi tumbuh, hal itu tidak
+    selalu tercermin dalam peningkatan ekspor, mungkin karena
+    faktor-faktor lain seperti kebijakan ekonomi atau kondisi pasar
+    internasional yang mempengaruhi ekspor.
+
+**5. Exchange Rate**
+
+-   **Koefisien**: $1.884×10^6$
+
+-   **P-value**: 0.172 (tidak signifikan)
+
+-   **Interpretasi**: Nilai tukar tidak menunjukkan pengaruh yang
+    signifikan terhadap ekspor, dengan p-value lebih besar dari 0.05.
+    Meskipun ada hubungan positif, nilai tukar tidak berpengaruh
+    signifikan terhadap ekspor dalam model ini, yang menunjukkan bahwa
+    faktor lain lebih dominan dalam memengaruhi ekspor.
+
+**6. Population**
+
+-   **Koefisien**: $−1.809×10^3$
+
+-   **P-value**: $<2×10^{−16}$ (signifikan)
+
+-   **Interpretasi**: Populasi memiliki pengaruh negatif yang signifikan
+    terhadap ekspor. Koefisien negatif menunjukkan bahwa dengan setiap
+    peningkatan 1 unit dalam populasi, ekspor diperkirakan akan menurun
+    sebesar $1.809×10^3$. Ini bisa disebabkan oleh keterbatasan sumber
+    daya atau infrastruktur yang mempengaruhi kemampuan negara dengan
+    populasi besar untuk melakukan ekspor secara efisien.
+
+**Kesimpulan Regresi**
+
+-   Middle income, GDP Total, dan Populasi memiliki pengaruh signifikan
+    terhadap ekspor.
+
+-   GDP Total dan status middle income berhubungan positif dengan
+    ekspor, sementara populasi berhubungan negatif dengan ekspor.
+
+-   Pertumbuhan GDP dan nilai tukar tidak menunjukkan hubungan
+    signifikan dengan ekspor dalam model ini.
+
+##### Regresi Fixed Effects
+
+```{r}
+# Model 3: Fixed Effects untuk mengontrol efek spesifik negara
+pdata <- pdata.frame(data_clean, index = c("country", "year"))
+model_fixed <- plm(export ~ middle_income + gdp_growth + exchange_rate + population, 
+                   data = pdata, 
+                   model = "within")
+summary(model_fixed)
+
+```
+
+Berikut adalah interpretasi dari hasil regresi fixed effects (plm):
+
+**1. Middle Income (Variabel Dummy)**
+
+-   **Koefisien**: $6.5255×10^8$
+
+-   **P-value**: 0.978 (tidak signifikan)
+
+-   **Interpretasi**: Variabel middle income tidak berpengaruh
+    signifikan terhadap ekspor dalam model fixed effects ini. P-value
+    yang sangat tinggi menunjukkan bahwa status middle income tidak
+    mempengaruhi ekspor secara signifikan setelah mengontrol efek
+    individu (negara). Meskipun koefisien positif, hasil ini tidak cukup
+    kuat untuk menarik kesimpulan.
+
+**2. GDP Growth**
+
+-   **Koefisien**: $−6.7346×10^8$
+
+-   **P-value**: 0.4688 (tidak signifikan)
+
+-   **Interpretasi**: Pertumbuhan GDP juga tidak menunjukkan pengaruh
+    signifikan terhadap ekspor, dengan p-value lebih besar dari 0.05.
+    Hal ini menunjukkan bahwa meskipun ekonomi tumbuh, tidak ada
+    hubungan yang signifikan antara **pertumbuhan GDP** dan **nilai
+    ekspor** dalam model ini.
+
+**3. Exchange Rate**
+
+-   **Koefisien**: $1.1586×10^7$
+
+-   **P-value**: 0.0270 (signifikan pada level 5%)
+
+-   **Interpretasi**: Nilai tukar memiliki pengaruh positif yang
+    signifikan terhadap ekspor, dengan koefisien $1.1586×10^7$. Hasil
+    ini menunjukkan bahwa peningkatan nilai tukar dapat mendorong
+    peningkatan ekspor. P-value yang lebih kecil dari 0.05 menunjukkan
+    bahwa hasil ini signifikan secara statistik.
+
+**4. Population**
+
+-   **Koefisien**: $3.2143×10^3$
+
+-   **P-value**: 0.0003248 (signifikan pada level 1%)
+
+-   **Interpretasi**: Populasi memiliki pengaruh positif yang sangat
+    signifikan terhadap ekspor. Koefisien sebesar $3.2143×10^3$
+    menunjukkan bahwa dengan setiap peningkatan dalam populasi, ekspor
+    negara diperkirakan akan meningkat sebesar $3.2143×10^3$. P-value
+    yang sangat kecil mengindikasikan bahwa pengaruh populasi terhadap
+    ekspor sangat signifikan.
+
+**Kesimpulan Regresi**
+
+-   Middle income dan pertumbuhan GDP tidak memiliki pengaruh signifikan
+    terhadap ekspor setelah mempertimbangkan efek tetap antar negara.
+
+-   Nilai tukar dan populasi memiliki pengaruh yang signifikan terhadap
+    ekspor, dengan nilai tukar mendorong peningkatan ekspor dan populasi
+    yang lebih besar berhubungan dengan ekspor yang lebih tinggi.
+
+-   Model ini dapat menjelaskan sekitar 21.6% variasi dalam ekspor,
+    menunjukkan bahwa meskipun model ini memberikan wawasan penting,
+    masih ada faktor lain yang mempengaruhi ekspor yang tidak tercakup
+    dalam analisis ini.
+
+##### Plot Regresi
+
+**Plot Regresi Multivariat**
+
+```{r}
+# Atur layout untuk 3 baris dan 1 kolom
+par(mfrow = c(3, 1))
+
+# Plot 1: Scatter Plot Ekspor vs Prediksi (Model Regresi)
+prediksi_model1 <- predict(model1)  # prediksi dari model
+
+# Scatter plot: Ekspor aktual vs Prediksi
+plot(prediksi_model1, data_clean$export, 
+     main = "Ekspor vs Prediksi (Model Regresi)", 
+     xlab = "Prediksi Ekspor", ylab = "Ekspor Aktual")
+abline(lm(data_clean$export ~ prediksi_model1), col = "blue")
+
+# Plot 2: Residuals Plot (Model Regresi)
+residuals_model1 <- residuals(model1)
+
+# Residual plot: Residuals vs Prediksi
+plot(prediksi_model1, residuals_model1, 
+     main = "Residuals vs Prediksi (Model Regresi)", 
+     xlab = "Prediksi Ekspor", ylab = "Residuals")
+abline(h = 0, col = "red", lty = 2)
+
+# Plot 3: Bar Plot Koefisien Model Regresi
+coef_model1 <- summary(model1)$coefficients[, 1]
+coef_model1_df <- data.frame(Variable = names(coef_model1), Coefficient = coef_model1)
+
+# Bar plot untuk koefisien
+barplot(coef_model1_df$Coefficient, names.arg = coef_model1_df$Variable, 
+        main = "Koefisien Model Regresi", 
+        col = "skyblue", las = 2, cex.names = 0.8)
+
+```
+
+Berdasarkan hasil plot yang ditampilkan, berikut adalah interpretasi
+untuk setiap plot:
+
+**1. Plot Ekspor vs Prediksi (Model Regresi)**
+
+-   Scatter plot ini menunjukkan hubungan antara ekspor aktual dan
+    ekspor yang diprediksi oleh model. Plot menunjukkan bahwa ada
+    hubungan yang cukup kuat antara nilai prediksi dan aktual, meskipun
+    ada sejumlah titik yang jauh dari garis regresi, yang mungkin
+    menunjukkan adanya outlier atau kesalahan prediksi yang besar untuk
+    beberapa negara.
+
+-   Garis biru pada plot ini menunjukkan hubungan linier antara ekspor
+    aktual dan prediksi. Namun, karena beberapa titik menyebar sangat
+    jauh dari garis, ini menunjukkan bahwa meskipun model cukup baik,
+    masih ada variasi yang tidak bisa dijelaskan oleh model.
+
+**2. Plot Residuals vs Prediksi (Model Regresi)**
+
+-   Plot ini menunjukkan residuals (kesalahan antara ekspor yang
+    diprediksi dan yang aktual) terhadap nilai prediksi. Residuals yang
+    tersebar secara acak di sekitar garis horizontal (garis merah pada
+    plot) menunjukkan bahwa model tidak memiliki pola yang jelas dan
+    tidak ada kesalahan sistematik yang dapat diidentifikasi.
+
+-   Namun, ada beberapa titik yang jauh dari garis, yang menandakan
+    outliers yang mungkin perlu perhatian lebih lanjut. Residuals yang
+    tersebar di sekitar 0 menunjukkan bahwa model cukup baik dalam
+    memprediksi nilai ekspor tanpa adanya pola yang menunjukkan
+    kesalahan besar.
+
+**3. Bar Plot Koefisien Model Regresi**
+
+-   Bar plot ini menggambarkan koefisien dari masing-masing variabel
+    dalam model regresi multivariat. Setiap bar mewakili koefisien dari
+    variabel dalam model, dan panjang bar menunjukkan seberapa besar
+    pengaruh variabel tersebut terhadap ekspor.
+
+-   Variabel middle_income memiliki bar yang cukup besar, yang
+    menunjukkan bahwa status middle income memiliki pengaruh signifikan
+    terhadap ekspor. Koefisien untuk variabel lain, seperti GDP total,
+    gdp_growth, exchange_rate, dan population, dapat dilihat pada plot,
+    dengan panjang bar yang menggambarkan seberapa besar kontribusi
+    masing-masing variabel terhadap model.
+
+**Plot Regresi PLM**
+
+```{r}
+# Mengambil prediksi dari model fixed effects
+prediksi_fixed <- fitted(model_fixed)
+
+# Memastikan data panel sudah bersih dari NA
+valid_data <- na.omit(data.frame(export = pdata$export, 
+                                 prediksi = prediksi_fixed, 
+                                 middle_income = pdata$middle_income,
+                                 gdp_growth = pdata$gdp_growth,
+                                 exchange_rate = pdata$exchange_rate,
+                                 population = pdata$population))
+
+# Atur layout untuk 3 baris dan 2 kolom untuk 6 plot
+par(mfrow = c(3, 2))
+
+# Plot 1: Ekspor vs Prediksi
+plot(valid_data$prediksi, valid_data$export, 
+     main = "Ekspor vs Prediksi (Model Fixed Effects)", 
+     xlab = "Prediksi Ekspor", ylab = "Ekspor Aktual")
+abline(lm(valid_data$export ~ valid_data$prediksi), col = "blue")
+
+# Plot 2: Ekspor vs Middle Income
+plot(valid_data$middle_income, valid_data$export, 
+     main = "Ekspor vs Middle Income", 
+     xlab = "Middle Income (0 = Non, 1 = Middle Income)", ylab = "Ekspor")
+abline(lm(valid_data$export ~ valid_data$middle_income), col = "blue")
+
+# Plot 3: Ekspor vs GDP Growth
+plot(valid_data$gdp_growth, valid_data$export, 
+     main = "Ekspor vs GDP Growth", 
+     xlab = "GDP Growth", ylab = "Ekspor")
+abline(lm(valid_data$export ~ valid_data$gdp_growth), col = "blue")
+
+# Plot 4: Ekspor vs Exchange Rate
+plot(valid_data$exchange_rate, valid_data$export, 
+     main = "Ekspor vs Exchange Rate", 
+     xlab = "Exchange Rate", ylab = "Ekspor")
+abline(lm(valid_data$export ~ valid_data$exchange_rate), col = "blue")
+
+# Plot 5: Ekspor vs Population
+plot(valid_data$population, valid_data$export, 
+     main = "Ekspor vs Population", 
+     xlab = "Population", ylab = "Ekspor")
+abline(lm(valid_data$export ~ valid_data$population), col = "blue")
+
+# Plot 6: Residuals vs Prediksi (Model Fixed Effects)
+residuals_fixed <- residuals(model_fixed)
+plot(valid_data$prediksi, residuals_fixed, 
+     main = "Residuals vs Prediksi (Model Fixed Effects)", 
+     xlab = "Prediksi Ekspor", ylab = "Residuals")
+abline(h = 0, col = "red", lty = 2)
+```
+
+**1. Ekspor vs Prediksi (Model Fixed Effects)**
+
+-   Plot ini menunjukkan hubungan antara ekspor aktual dan ekspor yang
+    diprediksi menggunakan model fixed effects.
+
+-   Titik-titik tersebar cukup merata di sepanjang sumbu prediksi, namun
+    terlihat ada beberapa titik yang sangat jauh dari garis regresi,
+    yang menunjukkan adanya outlier atau nilai ekstrem dalam data.
+
+-   Garis regresi biru yang ditambahkan menunjukkan kecenderungan secara
+    umum bahwa semakin besar prediksi, semakin tinggi nilai ekspor
+    aktual. Namun, ada banyak variabilitas di sekitar garis tersebut.
+
+**2. Ekspor vs Middle Income**
+
+-   Plot ini menggambarkan hubungan antara ekspor dan status middle
+    income (dengan nilai 0 untuk negara non-middle income dan 1 untuk
+    negara middle income).
+
+-   Tampak bahwa untuk negara middle income (1), nilai ekspor lebih
+    tinggi dibandingkan dengan negara non-middle income (0), meskipun
+    masih ada banyak variabilitas di antara keduanya.
+
+-   Ini menunjukkan bahwa middle income memiliki kecenderungan untuk
+    melakukan ekspor lebih tinggi daripada negara non-middle income,
+    namun tidak ada hubungan yang sepenuhnya konsisten.
+
+**3. Ekspor vs GDP Growth**
+
+-   Plot ini menggambarkan hubungan antara ekspor dan pertumbuhan GDP.
+
+-   Meskipun ada sejumlah negara dengan pertumbuhan GDP yang tinggi,
+    tidak tampak adanya hubungan yang jelas antara pertumbuhan GDP dan
+    nilai ekspor. Titik-titik tersebar secara acak, yang menunjukkan
+    bahwa pertumbuhan GDP mungkin bukan faktor utama dalam memprediksi
+    nilai ekspor.
+
+-   Secara umum, ini menunjukkan bahwa meskipun negara-negara dengan
+    pertumbuhan ekonomi yang lebih tinggi mungkin memiliki ekspor yang
+    lebih besar, tidak ada hubungan yang kuat atau langsung antara kedua
+    variabel tersebut.
+
+**4. Ekspor vs Exchange Rate**
+
+-   Plot ini memperlihatkan hubungan antara ekspor dan nilai tukar
+    (exchange rate).
+
+-   Sama seperti pada plot GDP growth, tidak ada hubungan yang jelas
+    antara nilai tukar dan ekspor, meskipun terdapat beberapa negara
+    dengan nilai tukar yang sangat tinggi.
+
+-   Titik-titik tersebar acak, menunjukkan bahwa nilai tukar tidak
+    menjadi faktor yang signifikan dalam menjelaskan fluktuasi nilai
+    ekspor berdasarkan model yang ada.
+
+**5. Ekspor vs Population**
+
+-   Plot ini menunjukkan hubungan antara populasi dan ekspor.
+
+-   Tampak adanya hubungan yang lebih jelas antara populasi besar dan
+    nilai ekspor yang lebih besar, yang dapat diartikan bahwa negara
+    dengan populasi lebih besar cenderung memiliki ekspor lebih besar,
+    mungkin karena pasar domestik yang lebih besar atau kapasitas
+    produksi yang lebih tinggi.
+
+-   Namun, meskipun hubungan ini lebih jelas, masih ada variabilitas
+    yang cukup besar pada setiap tingkat populasi.
+
+**6. Residuals vs Prediksi (Model Fixed Effects)**
+
+-   Plot ini memvisualisasikan distribusi residuals terhadap prediksi
+    untuk model fixed effects.
+
+-   Idealnya, residuals harus tersebar secara acak di sekitar garis
+    horizontal (0), yang menunjukkan bahwa model tidak menghasilkan
+    sistematis bias.
+
+-   Dalam plot ini, meskipun ada beberapa pola, tampaknya residuals
+    cukup tersebar secara acak di sekitar 0, meskipun ada beberapa nilai
+    ekstrem yang menandakan adanya outlier atau data yang tidak
+    sepenuhnya cocok dengan model.
+
+-   Ini memberikan indikasi bahwa model fixed effects cukup baik dalam
+    memprediksi ekspor, meskipun ada beberapa ketidaksesuaian.
+
+## Kesimpulan
+
+Berdasarkan hasil analisis regresi yang dilakukan, dapat disimpulkan
+bahwa faktor-faktor ekonomi yang mempengaruhi nilai ekspor di
+negara-negara ASEAN memiliki hubungan yang kompleks. Berikut adalah
+jawaban atas rumusan masalah penelitian:
+
+1.  **Pengaruh Status Middle Income terhadap Nilai Ekspor di
+    Negara-negara ASEAN:**
+
+    -   Hasil regresi menunjukkan bahwa status middle income memiliki
+        pengaruh yang signifikan terhadap nilai ekspor. Negara-negara
+        dengan status middle income (nilai 1) cenderung memiliki nilai
+        ekspor yang lebih tinggi dibandingkan dengan negara yang bukan
+        middle income (nilai 0). Hal ini tercermin dalam koefisien
+        positif pada middle_income, yang menunjukkan bahwa status middle
+        income berhubungan dengan peningkatan ekspor.
+
+2.  **Faktor-faktor Ekonomi yang Signifikan Mempengaruhi Ekspor di
+    Negara-negara ASEAN:**
+
+    -   **GDP Total**: Variabel GDP Total memiliki pengaruh yang sangat
+        signifikan terhadap ekspor di negara-negara ASEAN, seperti yang
+        ditunjukkan oleh koefisiennya yang besar dan p-value yang sangat
+        kecil. Negara dengan GDP lebih besar umumnya memiliki ekspor
+        yang lebih tinggi.
+
+    -   **Pertumbuhan GDP**: Variabel ini tidak menunjukkan pengaruh
+        signifikan terhadap ekspor. Hasil regresi menunjukkan bahwa
+        pertumbuhan ekonomi tidak berhubungan kuat dengan fluktuasi
+        nilai ekspor, yang mungkin disebabkan oleh faktor lain yang
+        lebih dominan dalam mempengaruhi ekspor.
+
+    -   **Nilai Tukar (Exchange Rate)**: Hasil regresi juga menunjukkan
+        bahwa nilai tukar tidak memiliki hubungan signifikan dengan
+        nilai ekspor. Meskipun nilai tukar bisa mempengaruhi biaya
+        ekspor, dalam model ini tidak terdeteksi sebagai faktor penting
+        dalam menjelaskan variasi ekspor.
+
+    -   **Populasi**: Variabel populasi memiliki pengaruh negatif yang
+        signifikan terhadap ekspor. Ini mungkin terkait dengan struktur
+        ekonomi negara-negara dengan populasi lebih besar, di mana
+        ketergantungan pada pasar domestik bisa lebih tinggi, yang
+        menyebabkan ekspor lebih rendah.
+
+3.  **Perbedaan Kontribusi Variabel Ekonomi pada Nilai Ekspor antar
+    Negara ASEAN:**
+
+    -   Perbedaan kontribusi variabel ekonomi pada nilai ekspor
+        antarnegara ASEAN terlihat dari koefisien yang bervariasi,
+        meskipun GDP Total memiliki pengaruh paling konsisten dan
+        signifikan di seluruh negara. Variabel lain, seperti pertumbuhan
+        GDP dan nilai tukar, tidak memberikan kontribusi signifikan pada
+        beberapa negara, mengindikasikan bahwa negara-negara ASEAN
+        memiliki faktor-faktor yang lebih lokal atau khusus yang
+        mempengaruhi nilai ekspor.
+
+4.  **Efek Khusus Negara (Fixed Effects) yang Mempengaruhi Hubungan
+    Faktor Ekonomi dan Nilai Ekspor:**
+
+    -   Model Fixed Effects menunjukkan adanya variabilitas antarnegara
+        yang signifikan dalam pengaruh faktor-faktor ekonomi terhadap
+        ekspor. Negara-negara ASEAN memiliki karakteristik spesifik,
+        seperti struktur ekonomi dan kebijakan perdagangan yang dapat
+        memengaruhi hubungan antara variabel ekonomi dan nilai ekspor.
+        Model ini berhasil mengontrol efek khusus negara yang mungkin
+        tidak tercapture oleh model regresi multivariat standar.
+
+5.  **Performa Model Regresi Multivariat dan Fixed Effects:**
+
+    -   Model regresi multivariat memberikan pemahaman yang cukup baik
+        tentang faktor-faktor ekonomi yang mempengaruhi ekspor secara
+        keseluruhan. Meskipun beberapa variabel seperti pertumbuhan GDP
+        dan nilai tukar tidak signifikan, model ini memberikan gambaran
+        umum yang jelas tentang pengaruh GDP Total dan middle income
+        terhadap ekspor.
+
+    -   Model Fixed Effects lebih efektif dalam menangani variabilitas
+        antarnegara dan dapat mengontrol efek negara yang mungkin tidak
+        terekam dalam model multivariat biasa. Meskipun beberapa
+        variabel tidak signifikan, model ini menunjukkan bahwa perbedaan
+        antarnegara ASEAN memainkan peran penting dalam memengaruhi
+        ekspor.
+
+6.  **Kesimpulan Umum**
+
+    -   Status middle income dan GDP Total terbukti sebagai faktor yang
+        paling signifikan dalam menjelaskan variasi ekspor di
+        negara-negara ASEAN.
+
+    -   Meskipun beberapa variabel seperti pertumbuhan GDP dan nilai
+        tukar tidak menunjukkan pengaruh yang signifikan dalam model
+        ini, populasi dan status middle income tetap berkontribusi dalam
+        menjelaskan perbedaan ekspor.
+
+    -   Model fixed effects memperlihatkan perbedaan yang signifikan
+        antarnegara ASEAN, menunjukkan pentingnya pengaruh efek khusus
+        negara dalam analisis ekspor.
+
+## Penutup
+
+Kesimpulan yang diperoleh dalam penelitian ini sejalan dengan teori
+*Heckscher-Ohlin* dalam perdagangan internasional, yang menyatakan bahwa
+pola ekspor suatu negara sangat dipengaruhi oleh keunggulan komparatif
+berdasarkan faktor produksi yang melimpah di negara tersebut. Negara
+dengan status middle income cenderung memiliki akses lebih baik terhadap
+modal, infrastruktur, dan teknologi, yang memungkinkan mereka untuk
+menghasilkan barang dengan nilai tambah lebih tinggi yang kompetitif di
+pasar internasional.
+
+Selain itu, teori *Gravity Model of Trade* juga mendukung temuan ini,
+dengan menekankan bahwa ukuran ekonomi (diukur melalui GDP) merupakan
+faktor utama dalam mendorong perdagangan antarnegara. Dengan GDP yang
+lebih besar, negara-negara memiliki kapasitas produksi dan daya saing
+ekspor yang lebih kuat. Temuan ini memperkuat bahwa faktor-faktor
+makroekonomi, seperti GDP Total dan status middle income, adalah
+determinan utama dalam menjelaskan variasi ekspor di negara-negara
+ASEAN, sebagaimana tercermin dalam hasil regresi dan model efek tetap
+yang digunakan.
+
+## Referensi
+
+Aripin, R. R. (2017). Model Regresi Multivariat untuk Menentukan
+Faktor-Faktor yang Mempengaruhi Kesejahteraan Kabupaten dan Kota di Jawa
+Tengah. Skripsi. Institut Teknologi Sepuluh Nopember Surabaya. Diakses
+dari <https://repository.its.ac.id>.
+
+ASEAN Statistics Division. (2020). *Statistical Indicators on ASEAN
+Economic Cooperation*. Jakarta: ASEAN Secretariat.
+
+Basuki, A. T., & Prawoto, N. (2016). Analisis Regresi dalam Penelitian
+Ekonomi & Bisnis: Dilengkapi Aplikasi SPSS & Eviews. Yogyakarta:
+Penerbit BPFE-Yogyakarta.
+
+Ghozali, I., & Ratmono, D. (2017). Analisis Multivariat dan
+Ekonometrika: Teori, Konsep, dan Aplikasi dengan Eviews 10 (Edisi 2).
+Semarang: Badan Penerbit Universitas Diponegoro.
+
+Kuncoro, M. (2016). Ekonomi Pembangunan: Teori, Masalah, dan Kebijakan.
+Jakarta: Erlangga.
+
+Rahmawati, L. (2022). Analisis Faktor-Faktor yang Mempengaruhi Volume
+Ekspor Kopi Indonesia ke Lima Negara Tujuan Utama. Skripsi. Universitas
+Islam Negeri Syarif Hidayatullah Jakarta. Diakses dari
+https://repository.uinjkt.ac.id.
+
+Satyahadewi, N., Aprizkiyandari, S., & Oprasianti, R. (2023). Regresi
+Data Panel dalam Analisis Faktor-Faktor yang Mempengaruhi IPM di
+Kalimantan Barat. Jurnal Statistika, Universitas Islam Bandung. Diakses
+dari https://journals.unisba.ac.id.
+
+Tarmizi, M. M. (2020). Ekonometrika: Model & Aplikasi. Jakarta: Penerbit
+Eureka.
+
+World Bank. (2020). *World Development Indicators 2020*. Washington,
+D.C.: World Bank.
+:::
