@@ -561,10 +561,10 @@ negara-negara ASEAN. Spesifikasi yang dilakukan adalah:
 *Model Regresi Multivariat & Dummy*
 
 $$ 
-\text{Ekspor}\_i = \beta\_0 + \beta\_1 \cdot \text{GDP Total}\_i +
-\beta\_2 \cdot \text{Pertumbuhan GDP}\_i + \beta\_3
-\cdot \text{Nilai Tukar}\_i + \beta\_4 \cdot \text{Populasi}\_i +
-\beta\_5 \cdot \text{Middle Income}\_i + \epsilon\_i
+\text{Ekspor}_i = \beta_0 + \beta_1 \cdot \text{GDP Total}_i +
+\beta_2 \cdot \text{Pertumbuhan GDP}_i + \beta_3
+\cdot \text{Nilai Tukar}_i + \beta_4 \cdot \text{Populasi}_i +
+\beta_5 \cdot \text{Middle Income}_i + \epsilon_i
 $$
 
 Di mana:
